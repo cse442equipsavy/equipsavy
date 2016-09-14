@@ -1,0 +1,28 @@
+date: September 14, 2016
+meeting_type: TA 
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+absent: [None]
+excused_absences: [ # Any legitamite excuses for absent team members
+  {ubit: <ubit5>, : reason: Had class. This was known through a Doodle poll before scheduling the meeting.},
+  {ubit: <ubit6>, reason: Abducted by aliens 15 minutes before meeting}
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress: Set up the git repository and added all the group members.
+  {ubit: <satyakra>, progress: Made the login page using HTML 
+  {ubit: <johnfinc>, progress: Made the page that contains all the courses that the students are registered for with a drop down menu. 
+  {ubit: <saiakhil>, progress: Made three buttons to "edit materials", "apporve", "check roster"
+  {ubit: <abhinavm>, progress: None}
+  {ubit: <thalaiky>, progress: None}
+  {ubit: <tgsyre>, progress: None}
+ 
+ 
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been dicussed.},
+  {ubit: <ubit6>, issue: After discussing with the TA it turns out that this problem is NP-Complete.}
+  ]
+  
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  - Split up the work required for sprint 1 between the people. Each person is responsible for a page for GUI. 
+  - Talked about if the project is going to be monotized or public.
+  - Asked Andy for recommendations for the Backend and Frontend programming the group can use. 
