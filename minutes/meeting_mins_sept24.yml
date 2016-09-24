@@ -1,0 +1,25 @@
+date: September 24, 2016
+meeting_type: group
+attendance: [thalaiky, satyakra, tgsyre (via phone), johnfinc, saiakhil, abhinavm]
+absent: [No Absences ]
+excused_absences: [ No Excused Absences ]
+task_progress: [ 
+  {ubit: <thalaiky>, progress: None},
+  {ubit: <satyakra>, progress: None},
+  {ubit: <tgsyre>, progress: posted GIThub issues },
+  {ubit: <johnfinc>, progress: posted GIThub issues },
+  {ubit: <saiakhil>, progress: None},
+  {ubit: <abhinavm>, progress: None}
+  ]
+
+issues: [{No Issues}
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+- Aiming to finish sprint 2 by October 5th.
+- Tristan will meet up with Satya, Thalaikya and Akhil on Monday or Tuesday to work on Login page
+- Abinav and JJ will meet for their part (Time and place TBD)
+- Question for this week, does all the backend code need to be together?
+- Aim for meeting 2: Push at least 1/4 of the code required by the end of sprint 2.
+- Use an IDE for coding Django. Suggested IDE: PyCharm
+- Group looked at the Django to familiarize ourselves. 
