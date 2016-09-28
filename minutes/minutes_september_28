@@ -1,13 +1,13 @@
 date: September 28, 2016
 meeting_type: TA 
-attendance: [<satyakra>, <johnfinc>, <thalaiky>]
-absent: [{ubit: <tgsyre>, reason: car oil change complications}]
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>]
+absent: []
 excused_absences: [ # Any legitamite excuses for absent team members
   {ubit: <saiakhil>, reason: Had class. This was known through a Doodle poll before scheduling the meeting.},
   {ubit: <abhinavm>, reason: Had to attend class. }
   ]
 task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
-  {ubit: <tgsyre>, progress: Set up the git repository and added all the group members.
+  {ubit: <tgsyre>, progress:None}
   {ubit: <satyakra>, progress: None}
   {ubit: <johnfinc>, progress: None}
   {ubit: <saiakhil>, progress: None}
