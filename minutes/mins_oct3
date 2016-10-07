@@ -1,0 +1,24 @@
+date: October 3, 2016
+meeting_type: group
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <saiakhil>, <abhinavm>]
+absent: [<tgsyre>]
+
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress:learning django tutorials}
+  {ubit: <satyakra>, progress: learning django using tutorials}
+  {ubit: <johnfinc>, progress: finished django tutorials, wrote a python script that parses through files}
+  {ubit: <saiakhil>, progress: worked on php code for authentification }
+  {ubit: <abhinavm>, progress: working on front end material and working on django tutorials}
+  {ubit: <thalaiky>, progress: finished the html css versions of webpage}
+
+
+
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <everyone>, issue: we are having trouble deciding if we want to continue using django.}
+
+  ]
+
+Notes:  []| # Anything covered in the meeting that doesn't fit elsewhere.
+  {ubit: <everyone>, note:We will try and figure out django tonight, and if we still have trouble consider looking for an alternative backend}
+  ]-
