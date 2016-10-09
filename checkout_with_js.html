@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
+<h1>Are these the items you wish to checkout?</h1>
 <body>
 
   <script type="text/javascript">
-
 function myFunction() {
       var x = document.createElement("INPUT");
       x.setAttribute("type", "checkbox");
       x.setAttribute("value", "abc");
       x.setAttribute("name", "xyz");
-
       document.body.appendChild(x);
   }
-
-
 function checkout(){
        window.location='confirmation_page.html';
    }
-  document.write("item 1: ")
-  myFunction();
-  document.write("<br>item 2: ");
-  myFunction();
-  document.write("<br>item 3: ");
-  myFunction();
-  document.write("<br>item 4: ");
-  myFunction();
-  document.write("<br>item 5: ");
-  myFunction();
-  document.write("<br>item 6: ");
-  myFunction();
+function goback(){
+          window.location='reservation_page2.html';
+      }
+  document.write("item 1 ")
+  document.write("<br>item 2 ");
+  document.write("<br>item 3 ");
+  document.write("<br>item 4 ");
+  document.write("<br>item 5 ");
+  document.write("<br>item 6 ");
   document.write("<br>");
-
-
   </script>
+<button onclick="goback();">Go back</button>
 <button onclick="checkout();">Check out</button>
 
 </body>
