@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <script type="text/javascript">
+
+function myFunction() {
+      var x = document.createElement("INPUT");
+      x.setAttribute("type", "checkbox");
+      x.setAttribute("value", "abc");
+      x.setAttribute("name", "xyz");
+
+      document.body.appendChild(x);
+  }
+
+
+function checkout(){
+       window.location='confirmation_page.html';
+   }
+  document.write("item 1: ")
+  myFunction();
+  document.write("<br>item 2: ");
+  myFunction();
+  document.write("<br>item 3: ");
+  myFunction();
+  document.write("<br>item 4: ");
+  myFunction();
+  document.write("<br>item 5: ");
+  myFunction();
+  document.write("<br>item 6: ");
+  myFunction();
+  document.write("<br>");
+
+
+  </script>
+<button onclick="checkout();">Check out</button>
+
+</body>
+</html>
