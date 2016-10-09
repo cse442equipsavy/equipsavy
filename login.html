@@ -6,12 +6,13 @@ body {
     height: 200px;
     width: 400px;
     background: #005bbb;
-
+    font: verdana;
     position: fixed;
     top: 50%;
     left: 50%;
     margin-top: -100px;
     margin-left: -200px;
+    font-family: "Times New Roman";
 }
 
 header, footer {
@@ -24,26 +25,24 @@ header, footer {
 
 </style>
 </head>
+<body>
+<body id="login"></body>
 
-
-<p> <center> <font size=30 "Trebuchet MS" color = "#ffffff"> <b> Login Required </b> </font> </center> </p>
-<center> 
-<form> 
-<input type = "text" width = "13" name = "UBIT" placeholder = "UBITName" style="width: 400px; height: 20px" /> <br>
+<script>
+document.getElementById("login").innerHTML = "Login Required";
+document.getElementById("login").style.font = "bold 40px Times New Roman,serif";
+document.getElementById("login").style.color = "white"; 
+document.body.style.backgroundColor = "#005bbb";
+</script>
+<center>
+<form>
+  <input type="text" name="UBIT" value="UBITName"style="width: 400px; height: 20px" /> <br>
 <hbreak>
-<input type = "password" name = "password" placeholder = "password" style="width: 400px; height: 20px" " /> <br>
+  <input type="password" name="lname" value="password" style="width: 400px; height: 20px" > 
 <br>
-<input type="submit" value="Log In" > 
+<input type="submit" value="Log In">
 </form>
 </center>
-
-
-<div class="container">
-
-
-<footer>Copyright © EquipSavy</footer>
-
-</div>
 
 </body>
 </html>
