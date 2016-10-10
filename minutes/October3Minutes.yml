@@ -1,0 +1,57 @@
+date: October 3, 2016
+
+meeting_type: Jesse 
+
+attendance: [thalaiky, satyakra, tgsyre2, johnfinc, saiakhil, abhinavm]
+
+absent: [No Absences ]
+
+excused_absences: Tristan Syre
+
+task_progress: [ 
+
+  {ubit: <thalaiky>, progress: Worked on the login page using HTML},
+
+  {ubit: <satyakra>, progress: Learning Django by doing tutorials},
+
+  {ubit: <tgsyre>, progress: Learning Django },
+
+  {ubit: <johnfinc>, progress: Wrote a python code that parses excel file},
+
+  {ubit: <saiakhil>, progress: Learning Django},
+
+  {ubit: <abhinavm>, progress: Working on Reserve, checkout pages using HTML}
+
+  ]
+
+issues: [{No Issues}
+
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+
+- Discussed about the learning curve of Django
+
+- Access to the server in Baldy 19 is given
+
+- Contact hackathon manager before changing server settings
+
+- Work on Django server and use the baldy19 server to deploy
+
+- Another VM access towards sprint 5 might be given for deployment
+
+- Learn to deploy the code to the server
+  
+- Work Distribution: 
+
+        - Satya- work on backend for Course Details page in Django
+
+        - Thalaikya - work on frontend for login and course details
+
+        - Tristan - work on backend for login and verification 
+
+        - JJ - work on backend for equipment edit/upload (TA/instructor perspective)
+
+        - Akhil - Work on backend for checkout and part of login page 
+
+        - Abhinav - work on frontend for edit, checkout, and confirm
