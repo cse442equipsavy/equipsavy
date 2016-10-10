@@ -20,8 +20,8 @@
 </form>
 
   
-  
   <!-- This is the script that handles uploaded files-->
+  <h2>Upload Item List Here</br></h2>
   <input type="file" id="fileInput" /><!-- lets the user input a file  (aka choose file upload button)")-->
   <script type="text/javascript">
 		  //readSingleFile reads a single file and prints what it read to an alert
@@ -39,7 +39,26 @@
 		var r = new FileReader();//create fileReader object
 		r.onload = function(e) {//when the file is loaded, run this function
 	      var fileContents = e.target.result;//load the contents of file into object
-		   alert("Text from uploaded file is:\n"+fileContents);
+		   
+		   var commaNumber=1;
+		   var outputNameString ="";
+			for (i=0;i<fileContents.length;i++){
+				if (fileContents.charAt(i)==','){
+					outputNameString +=" ";
+					if (commaNumber==1)//commanumber 1 means comma after name; 2 is after amount
+						commaNumber=2;
+					
+				}else if (fileContents.charAt(i)=='\n'){
+					commaNumber =1;
+					outputNameString+="\n";//adds enter key
+				}else {					//not a comma or \n
+					if (commaNumber==1)
+						outputNameString+=fileContents.charAt(i);//adds character to string
+				}
+			}
+			
+			
+		alert("Items from uploaded file are:\n\n"+outputNameString);
         //document.getElementById("p1").innerHTML = fileContents;	
 		var i =0;
 		var indexEnter =fileContents.IndexOf("\n");
@@ -48,7 +67,7 @@
 		i++;
 		
 		
-		while(i<3){
+		while(i<3){//3 for testing, normally go through all items
 		indexComma = (fileContents.substring(indexEnter)).IndexOf(",");
 		indexEnter = (fileContents.substring(indexComma)).IndexOf(",");
 		var tempString =fileContents.substring(indexEnter+1,indexComma-1);
