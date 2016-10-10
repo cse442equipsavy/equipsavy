@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html>
+    <style>
+h1{
+    clear: left;
+    text-align: left;
+        }
+    
+h3{
+        color: white;
+    }
+    
+
+body {
+    height: 200px;
+    width: 400px;
+    font: verdana;
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    margin-top: -100px;
+    margin-left: -200px;
+    
+}
+</style> 
 <body>
 
-<p> Select items you wish to check out:<p>
+    <p> <h1>Select items you wish to check out:</h1> <p>
+
 <form action="demo_form.asp" method="get">
+    <h3>
   <input type="checkbox" name="equipment" value="Hololens"> Hololens<br>
+        <br>
   <input type="checkbox" name="equipment" value="Oculus"> Oculus Drift DK 2<br>
+        <br>
   <input type="checkbox" name="equipment" value="printer"> 3D printer<br>
+        <br>
   <input type="checkbox" name="equipment" value="Kinect"> Kinect for Xbox one <br>
+        <br>
   <input type="checkbox" name="equipment" value="controllers"> Kinect for Xbox one <br>
+        <br>
  <input type="checkbox" name="equipment" value="Crazyfile"> Kinect for Xbox one <br>
+        <br>
  <input type="checkbox" name="equipment" value="Leap"> Leap Motion Controller <br>
+        <br>
  <input type="checkbox" name="equipment" value="watch"> Motorolla Moto 360 Smart Watch <br>
+        <br>
    <input type="checkbox" name="equipment" value="raspberry"> Raspberry Pi 2 <br>
+        <br>
  <input type="checkbox" name="equipment" value="gopro"> GoPro Hero4 Silver <br>
- <br><h2>
- <button type="button" onclick="alert ('Click Reserve')">Check Availability </button>
- <button type="button" onclick="window.location.href='checkout_page_with_js.html'">Next </button>    </h2>
+        
+    </h3>
+ <h2>
+ <button id="availability" type="button" onclick="alert ('Click Reserve')">Check Availability </button>
+    <!-- this will work in the next sprint. still working on the staff pages. -->
+<button id="next" type="button" onclick="window.location.href='checkout.html'">Next </button>    </h2>
+    
 </form>
 
   
-  <!-- This is the script that handles uploaded files-->
-  <h2>Upload Item List Here</br></h2>
+  <h1>Upload Item List Here </h1>
+    <br>
   <input type="file" id="fileInput" /><!-- lets the user input a file  (aka choose file upload button)")-->
   <script type="text/javascript">
 		  //readSingleFile reads a single file and prints what it read to an alert
   function readFromFile(evt) {
-
      var fileObject = evt.target.files[0]; //file object is f; first file is at [0]
   
     
@@ -79,16 +116,30 @@
 		
       }
       r.readAsText(fileObject);
-
-
-
     } else {//if a file was not uploaded
       alert("No File was uploaded");
     }
   }
   document.getElementById('fileInput').addEventListener('change', readFromFile, false);
-
 	</script>
+    
+    <script>
+
+document.getElementById("availability").style.font = "Times New Roman,serif";
+document.getElementById("availability").style.color = "black"; 
+document.getElementById("availability").style.fontSize = "x-large";
+        
+document.body.style.backgroundColor = "#005bbb";
+
+document.getElementById("next").style.font = "bold Times New Roman,serif";
+document.getElementById("next").style.color = "black"; 
+document.getElementById("next").style.fontSize = "x-large";
+        
+document.getElementById("fileInput").style.font = "bold Times New Roman,serif";
+document.getElementById("fileInput").style.color = "black"; 
+document.getElementById("fileInput").style.fontSize = "large";
+
+</script>
   
 </body>
 </html>
