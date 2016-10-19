@@ -11,8 +11,8 @@
         messagingSenderId: "254120319319"
     };
     firebase.initializeApp(config);
-    const auth = firebase.auth();
-
+    var auth = firebase.auth();
+    // var ref = Firebase.database().reference
     document.getElementById("register").addEventListener("click",register);
 
     function register(){
@@ -25,25 +25,22 @@
 
         });
 
-        var isNewUser = true;
 
-        var ref = new Firebase("https://equipsavy.firebaseio.com");
-        ref.onAuth(function (authData) {
-            if (authData && isNewUser) {
-
-                // save the user's profile into the database so we can list users
-
-                ref.child("users").child(authData.uid).set({
-                    provider: authData.provider,
-                    name: getName(authData)
-                });
-            }
+       // authDataCallback(authData);
+        ref.child("users").child(authData.uid).set({
+            name : getName(authData)
         });
-
         alert("Registered");
     }
 
-
+    // function authDataCallback(authData){
+    //     if(authData){
+    //         ref.child("users").child(authData.uid).set({
+    //             name : getName(authData)
+    //         });
+    //     }
+    //
+    // }
 
 // find a suitable name based on the meta info given by each provider
     function getName(authData) {
