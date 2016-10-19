@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <br>
 <br>
@@ -31,23 +30,23 @@
 </style>
 
 <body>
-<P> <center> <font size = "5" > <b> <h2> Login Required </h2> </b> </font> </center> </p>
+<P> <center> <font size = "5" > <b> <h2> Registeration Page </h2> </b> </font> </center> </p>
 
 <center>
     <br>
-    <input id= "email" type = "email" name = "emai" placeholder = "UBITName">
+    <input id= "email" type = "email" name = "email" placeholder = "UBITName">
     <br>
     <br>
     <input id= "password" type = "password" name = "password" placeholder = "password"> <br>
     <br>
     <br>
-    <Button id= "login" name="login"  > Log In </Button><br>
-
+    <input id= "rpassword" type = "password" name = "rpassword" placeholder = "re-password"> <br>
+    <br>
+    <br>
     <Button id= "register" name="register"  > Register </Button><br>
-    <!--<Button id= "logout" name="logout"  > Log Out </Button>-->
 </center>
 
-<script src="login.js"></script>
+<script src="register.js"></script>
 
 <script>
 
@@ -60,17 +59,15 @@
     document.getElementById("password").style.color = "Black";
     document.getElementById("password").style.fontSize = "x-large";
 
-    document.getElementById("login").style.font = "bold Times New Roman,serif";
-    document.getElementById("login").style.color = "black";
-    document.getElementById("login").style.fontSize = "large";
+    document.getElementById("rpassword").style.font = "bold Times New Roman,serif";
+    document.getElementById("rpassword").style.color = "Black";
+    document.getElementById("rpassword").style.fontSize = "x-large";
 
-    document.getElementById("register").style.font = "bold Times New Roman,serif";
-    document.getElementById("register").style.color = "black";
-    document.getElementById("register").style.fontSize = "large";
+    document.getElementById("Register").style.font = "bold Times New Roman,serif";
+    document.getElementById("Register").style.color = "black";
+    document.getElementById("Register").style.fontSize = "large";
 
-    document.getElementById("logout").style.font = "Times New Roman,serif";
-    document.getElementById("logout").style.color = "black";
-    document.getElementById("logout").style.fontSize = "large";
+
 </script>
 </body>
 </html>

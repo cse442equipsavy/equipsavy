@@ -12,74 +12,56 @@
     };
     firebase.initializeApp(config);
 
-    var isNewUser = true;
 
-    var ref = new Firebase("https://equipsavy.firebaseio.com");
-    ref.onAuth(function(authData) {
-        if (authData && isNewUser) {
 
-            // save the user's profile into the database so we can list users
+    document.getElementById('logout').style.visibility = 'hidden';
+    document.getElementById("login").addEventListener("click",myFunction);
+    document.getElementById("logout").addEventListener("click",logout);
+    document.getElementById("register").addEventListener("click", registerPage);
 
-            ref.child("users").child(authData.uid).set({
-                provider: authData.provider,
-                name: getName(authData)
-            });
-        }
-    });
+    const auth = firebase.auth();
 
-// find a suitable name based on the meta info given by each provider
-    function getName(authData) {
-        switch(authData.provider) {
-            case 'password':
-                return authData.password.email.replace(/@.*/, '');
-        }
+    function registerPage(){
+        document.getElementById('login').style.visibility = 'hidden';
     }
 
+    function logout() {
+        auth.signOut();
+        document.getElementById('login').style.visibility = 'visible';
+        document.getElementById('logout').style.visibility = 'hidden';
+    }
 
-    // document.getElementById('logout').style.visibility = 'hidden';
-    // document.getElementById("login").addEventListener("click",myFunction);
-    // document.getElementById("logout").addEventListener("click",logout);
-    //
-    // const auth = firebase.auth();
-    //
-    // function logout() {
-    //     auth.signOut();
-    //     document.getElementById('login').style.visibility = 'visible';
-    //     document.getElementById('logout').style.visibility = 'hidden';
-    // }
-    //
-    // function myFunction() {
-    //     const password = document.getElementById('password').value;
-    //     const email = document.getElementById('email').value;
-    //     auth.signInWithEmailAndPassword(email,password).catch(function(error) {
-    //         // Handle Errors here.
-    //         var errorCode = error.code;
-    //         var errorMessage = error.message;
-    //         // [START_EXCLUDE]
-    //         if (errorCode === 'auth/wrong-password') {
-    //             alert('Wrong password.');
-    //         } else {
-    //             alert(errorMessage);
-    //         }
-    //         console.log(error);
-    //         document.getElementById("login").disabled = false;
-    //         // [END_EXCLUDE]
-    //     });
-    //
-    // }
-    //
-    // firebase.auth().onAuthStateChanged(firebaseUser => {
-    //     if(firebaseUser){
-    //         window.location="coursedetails.html";
-    //         document.getElementById('login').style.visibility = 'hidden';
-    //         document.getElementById('logout').style.visibility = 'visible';
-    //         console.log("works");
-    //     }
-    //     else{
-    //         console.log('not logged in');
-    //     }
-    // });
+    function myFunction() {
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        auth.signInWithEmailAndPassword(email,password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // [START_EXCLUDE]
+            if (errorCode === 'auth/wrong-password') {
+                alert('Wrong password.');
+            } else {
+                alert(errorMessage);
+            }
+            console.log(error);
+            document.getElementById("login").disabled = false;
+            // [END_EXCLUDE]
+        });
 
+    }
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser){
+            window.location="coursedetails.html";
+            document.getElementById('login').style.visibility = 'hidden';
+            document.getElementById('logout').style.visibility = 'visible';
+            console.log("works");
+        }
+        else{
+            console.log('not logged in');
+        }
+    });
 
 }());
 
