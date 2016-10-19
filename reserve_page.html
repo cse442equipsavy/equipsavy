@@ -27,6 +27,8 @@
   //readSingleFile reads a single file and prints what it read to an alert
   function readFromFile(evt) {
 
+document.write("RAINBOW UNICORNS LOVE MONKEYS!!!");
+  
      var fileObject = evt.target.files[0]; //file object is f; first file is at [0]
   
     
@@ -34,8 +36,8 @@
     if (fileObject) {//if a file was uploaded
  
 
-//document.getElementById("box1").innerHTML = "Hello";
 
+ 
 var r = new FileReader();//create fileReader object
 r.onload = function(e) {//when the file is loaded, run this function
       var fileContents = e.target.result;//load the contents of file into object
