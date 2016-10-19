@@ -2,7 +2,7 @@
  * Created by satya on 10/18/16.
  */
 
-(function() {
+(function(){
     const config = {
         apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
         authDomain: "equipsavy.firebaseapp.com",
@@ -12,17 +12,15 @@
     };
     firebase.initializeApp(config);
 
-
-
     document.getElementById('logout').style.visibility = 'hidden';
     document.getElementById("login").addEventListener("click",myFunction);
     document.getElementById("logout").addEventListener("click",logout);
-    document.getElementById("register").addEventListener("click", registerPage);
+    document.getElementById("register").addEventListener("click",registerPage);
 
     const auth = firebase.auth();
 
     function registerPage(){
-        document.getElementById('login').style.visibility = 'hidden';
+        window.location = "register.html";
     }
 
     function logout() {
@@ -63,5 +61,5 @@
         }
     });
 
-}());
 
+}());
