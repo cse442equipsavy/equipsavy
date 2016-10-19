@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
+    <style>
+    
+body {
+    
+    height: 200px;
+    width: 400px;
+    font: verdana;
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    margin-top: -100px;
+    margin-left: -200px;
+    
+}
+    </style>
 <body>
+
+ <h2>
 
   <script type="text/javascript">
   document.write("checkout successful<br>");
   function gotoDetails(){
          window.location='Course_Details.html';
      }
-
+      document.body.style.backgroundColor = "#005bbb";
   </script>
-<button onclick="gotoDetails();">Finish</button>
+    </h2>
+<button id="details" onclick="gotoDetails();">Finish</button>
+    
+    <script>
 
-</body>
+document.getElementById("details").style.font = "Times New Roman,serif";
+document.getElementById("details").style.color = "black"; 
+document.getElementById("details").style.fontSize = "x-large";
+    </script>
+
+   </body>
 </html>

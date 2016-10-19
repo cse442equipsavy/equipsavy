@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <h1>Are these the items you wish to checkout?</h1>
+    
+    <style>
+h1{
+    clear: left;
+    text-align: left;
+    
+}
+body {
+    height: 200px;
+    width: 400px;
+    font: verdana;
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    margin-top: -100px;
+    margin-left: -200px;
+    
+}
+</style> 
+    
 <body>
 
   <script type="text/javascript">
+      document.body.style.backgroundColor = "#005bbb";
 function myFunction() {
       var x = document.createElement("INPUT");
       x.setAttribute("type", "checkbox");
@@ -28,5 +49,6 @@ function goback(){
 <button onclick="goback();">Go back</button>
 <button onclick="checkout();">Check out</button>
 
-</body>
+
+   </body>
 </html>
