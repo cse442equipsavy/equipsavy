@@ -19,7 +19,26 @@
  <button type="button" onclick="window.location.href='checkout_page_with_js.html'">Next </button>    </h2>
 </form>
 
-  
+
+<!-- http://time2hack.com/2015/03/intro-to-firebase-with-javascript-and-jquery.html-->
+<script type="text/javascript">
+var dbRef = new Firebase('https://web-quickstart-414a7.firebaseio.com/');
+var contactsRef = dbRef.child('contacts');
+contactsRef
+.push({
+    name: 'Time to Hack',
+    email: 'thetime2hack@gmail.com',
+    location: {
+        city: 'The Internet',
+        state: 'The Internet',
+        zip: '127.0.0.1'
+    }
+})
+</script>
+
+
+<!-- http://time2hack.com/2015/03/intro-to-firebase-with-javascript-and-jquery.html-->
+
   <!-- This is the script that handles uploaded files-->
   <h2>Upload Item List Here</br></h2>
   <input type="file" id="fileInput" /><!-- lets the user input a file  (aka choose file upload button)")-->
@@ -28,18 +47,18 @@
   function readFromFile(evt) {
 
      var fileObject = evt.target.files[0]; //file object is f; first file is at [0]
-  
-    
- 
+
+
+
     if (fileObject) {//if a file was uploaded
- 
+
 
 //document.getElementById("box1").innerHTML = "Hello";
 
 var r = new FileReader();//create fileReader object
 r.onload = function(e) {//when the file is loaded, run this function
       var fileContents = e.target.result;//load the contents of file into object
-   
+
    var commaNumber=1;
    var outputNameString ="";
 for (i=0;i<fileContents.length;i++){
@@ -89,7 +108,6 @@ i++;
   document.getElementById('fileInput').addEventListener('change', readFromFile, false);
 
 </script>
-  
+
 </body>
 </html>
-
