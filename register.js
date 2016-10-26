@@ -11,9 +11,15 @@
         messagingSenderId: "254120319319"
     };
     firebase.initializeApp(config);
-    var auth = firebase.auth();
-    // var ref = Firebase.database().reference
+    var userId, userName;
+
+    const auth = firebase.auth();
+
+    const dbRefObject = firebase.database();
+
     document.getElementById("register").addEventListener("click",register);
+
+
 
     function register(){
 
@@ -25,29 +31,27 @@
 
         });
 
+        userName = email.replace(/@.*/, '');
+        var user = firebase.auth().currentUser;
+        if(user != null){
+            userId = user.uid;
+        }
 
-       // authDataCallback(authData);
-        ref.child("users").child(authData.uid).set({
-            name : getName(authData)
+        dbRefObject.ref('users/' + userId).set({
+            username: userName
         });
+
         alert("Registered");
     }
 
-    // function authDataCallback(authData){
-    //     if(authData){
-    //         ref.child("users").child(authData.uid).set({
-    //             name : getName(authData)
-    //         });
-    //     }
-    //
-    // }
 
-// find a suitable name based on the meta info given by each provider
-    function getName(authData) {
-        switch (authData.provider) {
-            case 'password':
-                return authData.password.email.replace(/@.*/, '');
-        }
-    }
+
+// // find a suitable name based on the meta info given by each provider
+//     function getName(ad) {
+//         switch (ad.provider) {
+//             case 'password':
+//                 return ad.password.email.replace(/@.*/, '');
+//         }
+//     }
 
 }());
