@@ -5,7 +5,7 @@
 
 
     // Initialize Firebase equipsavy
-/*    var config = {
+    var config = {
       apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
       authDomain: "equipsavy.firebaseapp.com",
       databaseURL: "https://equipsavy.firebaseio.com",
@@ -13,30 +13,8 @@
       messagingSenderId: "254120319319"
     };
     firebase.initializeApp(config);
-*/
-
-//upload to codebase example from firebase docs
-var config = {
-    apiKey: "AIzaSyDc3FG4Lx6zHJ7jnzz4YDrXrEMy_AhZgXY",
-    authDomain: "web-quickstart-414a7.firebaseapp.com",
-    databaseURL: "https://web-quickstart-414a7.firebaseio.com",
-    storageBucket: "web-quickstart-414a7.appspot.com",
-    messagingSenderId: "587078827288"
-  };
-  firebase.initializeApp(config);
-
-firebase.database().ref('courses/CSE442/Equipment/beaker' ).set({
-    item: "beaker",
-    amount: "4",
-    checkoutTime: "3"
-  });
 
 
-  firebase.database().ref('courses/CSE442/Equipment/hololens' ).set({
-      item: "hololens",
-      amount: "1",
-      checkoutTime: "2"
-    });
 //end of codebase uplaod from firebase docs
 
 //get uploaded file and put info in alert
