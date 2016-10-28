@@ -67,17 +67,20 @@ for (i=0; i<fileContents.length; i++){//go through all file contents
   }
 }else if(fileContents.charAt(i)=='\n'){//after item checkoutTime
   commaNumber =1;
+  // inputString=(inputString.substring(0,length-2));
   equipCheckoutTime.push(inputString);
   inputString="";//clear string
+if(i<fileContents.length-1)
   itemNum++;//increment itemNum
   }else {//not a comma or \n
-
+    if (fileContents.charAt(i)!='\r')//end of line is \r\n, so ignore \r
   inputString+=fileContents.charAt(i);//adds character to string
   }
 
 }
+equipCheckoutTime.push(inputString);
 console.log("Finished parsing, line 100\n");
-for (i=0; i<itemNum;i++){//uploads info to list
+for (i=0; i<=itemNum;i++){//uploads info to list
   firebase.database().ref('courses/CSE442/Equipment/'+equipName[i] ).set({
       item: equipName[i],
       amount: equipAmount[i],
