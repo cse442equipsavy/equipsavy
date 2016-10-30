@@ -1,5 +1,5 @@
 /**
- * Created by satya on 10/18/16.
+ * Created by satya on 10/30/16.
  */
 
 (function(){
@@ -12,21 +12,16 @@
     };
     firebase.initializeApp(config);
 
-    document.getElementById('logout').style.visibility = 'hidden';
-    document.getElementById("login").addEventListener("click",myFunction);
-    document.getElementById("logout").addEventListener("click",logout);
-    document.getElementById("register").addEventListener("click",registerPage);
+
+    <!-- Login page -->
 
     const auth = firebase.auth();
+    document.getElementById('logout').style.visibility = 'hidden';
+    document.getElementById("login").addEventListener("click",myFunction);
+    document.getElementById("register").addEventListener("click",registerPage);
 
     function registerPage(){
         window.location = "register.html";
-    }
-
-    function logout() {
-        auth.signOut();
-        document.getElementById('login').style.visibility = 'visible';
-        document.getElementById('logout').style.visibility = 'hidden';
     }
 
     function myFunction() {
@@ -51,7 +46,7 @@
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser){
-            window.location="coursedetails.html";
+            window.location="courses.html";
             document.getElementById('login').style.visibility = 'hidden';
             document.getElementById('logout').style.visibility = 'visible';
             console.log("works");
@@ -60,6 +55,45 @@
             console.log('not logged in');
         }
     });
+
+
+    <!-- Register Page -->
+
+    const dbRefObject = firebase.database();
+    document.getElementById("register").addEventListener("click",register);
+    var userId, userName;
+
+    function register(){
+
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        auth.createUserWithEmailAndPassword(email,password).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+        });
+
+        userName = email.replace(/@.*/, '');
+        var user = firebase.auth().currentUser;
+        if(user != null){
+            userId = user.uid;
+        }
+
+        dbRefObject.ref('users/' + userId).set({
+            username: userName
+        });
+
+        alert("Registered");
+    }
+
+    <!-- Courses Page -->
+
+    document.getElementById("logout").addEventListener("click",logout);
+    function logout() {
+        auth.signOut();
+        document.getElementById('login').style.visibility = 'visible';
+        document.getElementById('logout').style.visibility = 'hidden';
+    }
 
 
 }());
