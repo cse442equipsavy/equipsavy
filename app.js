@@ -46,9 +46,14 @@
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser){
-            window.location="courses.html";
-            document.getElementById('login').style.visibility = 'hidden';
-            console.log("works");
+            if(userRole == 3){
+                window.location = "departmental.html";
+            }
+            else{
+                window.location="courses.html";
+                document.getElementById('login').style.visibility = 'hidden';
+                console.log("works");
+            }
         }
         else{
             console.log('not logged in');
