@@ -26,24 +26,22 @@
 </p></h2>
 
 <h2>
- <button type=button  onclick="show('course');" >Courses</button>
+ <button type=button id=f1 onclick="show('course');" >Courses</button>
  <br>
  <br>
-    <button type=button  onclick="show('staff');">Staff Member's </button>
+    <button type=button id=f2 onclick="show('staff');">Staff Member's </button>
     <br>
     <br>
-    <button type=button  onclick="show('instructor');">Instructor's </button>
+    <button type=button id=f3 onclick="show('instructor');">Instructor's </button>
     <br>
     <br>
 </h2>
 
 <script type="text/javascript">
-
    function home()
    {
    window.location="Course_Details.html";
    }
-
     function show(elementId) { 
   
   document.getElementById("course").style.display="none";
@@ -53,8 +51,6 @@
   
   document.getElementById(elementId).style.display="block";
 }
-
-
  </script>   
     
  
@@ -155,7 +151,16 @@
   document.getElementById("course").style.display="none";
   document.getElementById("staff").style.display="none";
   document.getElementById("instructor").style.display="none";
+  
+
+document.body.style.backgroundColor = "#005bbb";
   </script>
+  
+
+
+
+  
+  
 
 <footer>
 <hr>
