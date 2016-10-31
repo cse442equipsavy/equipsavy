@@ -12,30 +12,78 @@
     };
     firebase.initializeApp(config);
 
-  const preObject = document.getElementById('courses');
-  const list = document.getElementById('ullist');
-	
-  const userid = firebase.auth().currentUser.uid();
-  const dbObject = firebase.database().ref().child('users/' + userid);
-  const dbuser = dbObject.child('courses');
+var userID = auth.currentUser.uid();
+    var list = [];
+    var slist = [];
+    var ilist = [];
+    var userRole;
+    var sselect = document.getElementById("scourses");
+    var iselect = document.getElementById("icourses");
+    const dbObject = firebase.database().ref().child('users/' + userID);
+    const dbCurrentUserCourses = dbObject.child('courses');
+    const dbStuCourses = dbCurrentUserCourses.child('StudentCourses');
+    const dbInstCourses =  dbCurrentUserCourses.child('InstCourses');
+    const dbCurrentUserRole = dbObject.child('Role');
 
-  dbObject.on('value', snapshot => {
-  	preObject.innerText = JSON.stringify(snapshot.val(),null,3);
-});
- 
-  dbuser.on('child_added', snapshot => {
-	const li = document.createElement('li');
-	li.innerText = snapshot.val();
-	li.id = snapshot.key;
-	list.appendChild(li);
- });
+    dbStuCourses.on('child_added', snapshot => {
 
-/*
- dbuser.op('child_changed', snapshot =>{
-	const liChanged = document.getElementById(snapshot.key);
-	liChanged.innerText = snap.val();
- })
-*/
+        slist = snapshot.val();
+
+    });
+
+    dbInstCourses.on('child_added', snapshot => {
+
+        ilist = snapshot.val();
+
+    });
+
+    dbCurrentUserCourses.on('child_added', snapshot => {
+
+        list = snapshot.val();
+
+    });
+
+    dbCurrentUserRole.on('child_added', snapshot => {
+
+        userRole = snapshot.val();
+
+    });
+
+    if(userRole == 0){
+        for(var i = 0; i < list.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = list[i];
+            opt.value = list[i];
+            sselect.appendChild(opt);
+        }
+    }
+
+    if(userRole == 2){
+        for(var i = 0; i < list.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = list[i];
+            opt.value = list[i];
+            iselect.appendChild(opt);
+        }
+    }
+
+    if(userRole == 1){
+
+        for(var i = 0; i < slist.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = slist[i];
+            opt.value = slist[i];
+            sselect.appendChild(opt);
+        }
+
+        for(var i = 0; i < ilist.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = ilist[i];
+            opt.value = ilist[i];
+            iselect.appendChild(opt);
+        }
+
+    }
 
 
 });
