@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1{
+    clear: left;
+    text-align: left;
+    
+}
+body {
+    height: 200px;
+    width: 400px;
+    font: verdana;
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    margin-top: -100px;
+    margin-left: -200px;
+    
+}
+</style> 
+</head>
+<body>
+   
+<h1 id="course"> </h1>
+
+<p id="choose"></p>
+
+<h3 id="student"></h3>
+ <select name="courses">
+     <option value="CSE442">  </option>
+       <option value="CSE442"> CSE442 </option>
+       <option value="CSE421"> CSE421 </option>
+       <option value="CSE473"> CSE473 </option>
+       <option value="MFC215"> MFC215 </option>
+       <option value="MFC330"> MFC330 </option>
+    </select>
+       <button type="button" onclick="nextpagestudent()" >Confirm Course</button> 
+
+<h3 id="Staff" ></h3>
+ <select name="choose" id = "staff_select">
+     <option value="CSE442">  </option>
+       <option value="CSE442"> CSE442 </option>
+       <option value="CSE421"> CSE421 </option>
+          
+  
+</select>
+    <button type="button" onclick="nextpagestaff()" id = "staff_button" >Confirm Course</button> 
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+    authDomain: "equipsavy.firebaseapp.com",
+    databaseURL: "https://equipsavy.firebaseio.com",
+    storageBucket: "equipsavy.appspot.com",
+    messagingSenderId: "254120319319"
+  };
+  firebase.initializeApp(config);
+      const auth = firebase.auth();
+   
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        
+       
+        if(firebaseUser){
+            
+            var user = firebase.auth().currentUser.email;
+            if(user!= "staff@buffalo.edu"){
+                
+            document.getElementById('Staff').style.visibility = 'hidden';    
+            document.getElementById('staff_select').style.visibility = 'hidden';
+                document.getElementById('staff_button').style.visibility = 'hidden';
+            }
+           
+            console.log("works");
+        }
+        else{
+            console.log('not logged in');
+        }
+    });
+    
+    function logout() {
+        auth.signOut();
+        window.location = "slogin.html";
+    }
+</script>
+
+
+
+<script type="text/javascript">
+   function nextpagestudent(){
+       window.location='reserve_page.html';
+   };
+     function nextpagestaff(){
+       window.location='editmaterial.html';
+   };
+document.getElementById("course").innerHTML = "Course Details";
+document.getElementById("course").style.font = "Times New Roman,serif";
+document.getElementById("course").style.color = "white"; 
+document.getElementById("course").style.fontSize = "xx-large";
+    
+document.body.style.backgroundColor = "#005bbb";
+document.getElementById("student").innerHTML = "As Student: ";
+document.getElementById("student").style.font = "bold Times New Roman,serif";
+document.getElementById("student").style.color = "white"; 
+document.getElementById("student").style.fontSize = "large";
+    
+document.getElementById("Staff").innerHTML = "As staff: ";
+document.getElementById("Staff").style.font = "bold Times New Roman,serif";
+document.getElementById("Staff").style.color = "white"; 
+document.getElementById("Staff").style.fontSize = "large";
+    
+document.getElementById("choose").innerHTML = "Choose your course: ";
+document.getElementById("choose").style.font = "Times New Roman,serif";
+document.getElementById("choose").style.color = "white"; 
+document.getElementById("choose").style.fontSize = "medium";
+    
+</script>
+    <br>
+    <br>
+    
+     <button type="button"  align="right" onclick="logout()">Log Out</button>
+
+
+</body>
+</html>
+

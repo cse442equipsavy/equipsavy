@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+h1{
+    clear: left;
+    text-align: left;
+    color:black;
+}
+body {
+    height: 200px;
+    width: 400px;
+    font: verdana;
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    margin-top: -100px;
+    margin-left: -200px;
+    color:white;
+}
+</style> 
+    
+<body>
+    <h1>Are these the items you wish to checkout?</h1>
+    
+<h3>
+  <script type="text/javascript">
+      document.body.style.backgroundColor = "#005bbb";
+function myFunction() {
+      var x = document.createElement("INPUT");
+      x.setAttribute("type", "checkbox");
+      x.setAttribute("value", "abc");
+      x.setAttribute("name", "xyz");
+      document.body.appendChild(x);
+  }
+function checkout(){
+       window.location='confirmationpage.html';
+   }
+function goback(){
+          window.location='reserve_page.html';
+      }
+  document.write("Hololens ")
+  document.write("<br>Oculus ");
+  document.write("<br>gopro");
+
+  document.write("<br>");
+  </script>
+<button onclick="goback();">Go back</button>
+<button onclick="checkout();">Check out</button>
+    </h3>
+
+</body>
+</html>

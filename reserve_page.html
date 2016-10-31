@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p> Select items you wish to check out:<p>
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+      authDomain: "equipsavy.firebaseapp.com",
+      databaseURL: "https://equipsavy.firebaseio.com",
+      storageBucket: "equipsavy.appspot.com",
+      messagingSenderId: "254120319319"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script>
+  //var c=13;
+//  var db = firebase.database();
+  //var ref = db.ref("courses/CSE442/Equipment/" );
+  function GetAllChecked() {
+               var chkedshid = new Array();
+               var rows = new Array();
+               rows = document.getElementById("dataTable").getElementsByTagName("TR");
+               trcount = rows.length;
+                    var totlchk = new Array();
+               for (var i = 0; i < rows.length; i++) {
+                   trid = rows[i].id;
+                   if (inputList = document.getElementById(trid).getElementsByTagName("input")) {
+                       for (var n = 0; n < inputList.length; n++) {
+                           if (inputList[n].type == "checkbox") {
+                               if (inputList[n].checked == true) {
+                                   chkedshid[n] = inputList[n].id;
+                               }
+                           }
+                       }
+                       totlchk = totlchk.concat(chkedshid.join());
+                   }
+               }
+               for (var c=0; c<totlchk.length;c++)
+               {
+                 var s =firebase.database().ref('courses/CSE442/Equipment/'+totlchk[i]).set({
+                  amount: amount-1
+                  });
+               }
+               window.location='confirmation_page.html';
+            //   document.getElementById('myHiddenfield').value = totlchk.join();
+            //   document.getElementById("BtnSav2Cart").click();
+          }//get all checked
+          function checkout(){
+                 window.location='confirmationpage.html';
+             }
+  </script>
+
+
+  <TABLE id="dataTable" width="20px" border="1">
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Beaker" /> <label for="Beaker" > </label>   </TD>
+          <TD> Beaker </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Hololens" /> <label for="Hololens" > </label>   </TD>
+          <TD> Hololens </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Laptop" /> <label for="Laptop" > </label>   </TD>
+          <TD> Laptop </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Monitor" /> <label for="Monitor" > </label>   </TD>
+          <TD> Monitor </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Motorola Smart Watch" /> <label for="Motorola Smart Watch" > </label>   </TD>
+          <TD> Motorola Smart Watch </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Mouse" /> <label for="Mouse" > </label>   </TD>
+          <TD> Mouse </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Nexus" /> <label for="Nexus" > </label>   </TD>
+          <TD> Nexus </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Nexus 6" /> <label for="Nexus 6" > </label>   </TD>
+          <TD> Nexus 6 </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Oculus Rift" /> <label for="Oculus Rift" > </label>   </TD>
+          <TD> Oculus Rift </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="Projector" /> <label for="Projector" > </label>   </TD>
+          <TD> Projector </TD>
+
+      </TR>
+      <TR>
+          <TD><INPUT type="checkbox" name="chk"  id="iPhone" /> <label for="iPhone" > </label>   </TD>
+          <TD> iPhone </TD>
+
+      </TR>
+      <TR>
+            <TD><INPUT type="checkbox" name="chk"  id="iPhone 7 Plus" /> <label for="iPhone 7 Plus" > </label>   </TD>
+            <TD> iPhone 7 Plus </TD>
+
+        </TR>
+        <TR>
+            <TD><INPUT type="checkbox" name="chk"  id="iphone 7" /> <label for="iphone 7" > </label>   </TD>
+            <TD> iphone 7 </TD>
+
+        </TR>
+
+    </TABLE>
+<button onclick="checkout()">Reserve</button>
+
+
+</body>
+</html>
