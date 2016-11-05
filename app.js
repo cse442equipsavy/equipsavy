@@ -2,19 +2,20 @@
  * Created by satya on 10/30/16.
  */
 
-(function(){
-    const config = {
-        apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
-        authDomain: "equipsavy.firebaseapp.com",
-        databaseURL: "https://equipsavy.firebaseio.com",
-        storageBucket: "equipsavy.appspot.com",
-        messagingSenderId: "254120319319"
-    };
-    firebase.initializeApp(config);
+
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBzm4wdPhE7KD6ETeQpLdFp9B-TZSeW-7w",
+    authDomain: "my-project-testing-1386.firebaseapp.com",
+    databaseURL: "https://my-project-testing-1386.firebaseio.com",
+    storageBucket: "my-project-testing-1386.appspot.com",
+    messagingSenderId: "135686899695"
+  };
+  firebase.initializeApp(config);
 
 
     <!-- Login page --> /*---------------------------------------------------------------------------------------*/
-
+(function(){
     const auth = firebase.auth();
     // document.getElementById('logout').style.visibility = 'hidden';
     document.getElementById("login").addEventListener("click",myFunction);
@@ -56,105 +57,80 @@
         }
     });
 
-
-    <!-- Register Page --> /*------------------------------------------------------------------------------------*/
-
-    const dbRefObject = firebase.database();
-    document.getElementById("register").addEventListener("click",register);
-    var userId, userName;
-
-    function register(){
-
-        const password = document.getElementById('password').value;
-        const email = document.getElementById('email').value;
-        auth.createUserWithEmailAndPassword(email,password).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-        });
-
-        userName = email.replace(/@.*/, '');
-        var user = firebase.auth().currentUser;
-        if(user != null){
-            userId = user.uid;
-        }
-
-        dbRefObject.ref('users/' + userId).set({
-            username: userName
-        });
-
-        alert("Registered");
-    }
-
-    <!-- Courses Page --> /*-------------------------------------------------------------------------------------*/
-
-    document.getElementById("logout").addEventListener("click",logOut);
-    document.getElementById("stuconfirm").addEventListener("click", studConfirm);
-    document.getElementById("iconfirm").addEventListener("click", instConfirm);
-
-    function logOut() {
-        alert("LogOut Function")
-        auth.signOut();
-        window.location = "slogin.html";
-    }
-
-    /*
-     * Thalaikya's Code Begins
-     */
-
-    var userID = auth.currentUser.uid();
-    var list = [];
-    var userRole;
-    var sselect = document.getElementById("scourses");
-    var iselect = document.getElementById("icourses");
-    const dbObject = firebase.database().ref().child('users/' + userid);
-    const dbCurrentUserCourses = dbObject.child('courses');
-    const dbCurrentUserRole = dbObject.child('Role');
-
-    dbCurrentUserCourses.on('child_added', snapshot => {
-
-        list = snapshot.val();
-
-    });
-
-    dbCurrentUserRole.on('child_added', snapshot => {
-
-        userRole = snapshot.val();
-
-    });
-
-    if(userRole == 0){
-        for(var i = 0; i < list.length; i++) {
-            var opt = document.createElement('option');
-            opt.innerHTML = list[i];
-            opt.value = list[i];
-            sselect.appendChild(opt);
-        }
-    }
-
-    if(userRole == 1){
-        for(var i = 0; i < list.length; i++) {
-            var opt = document.createElement('option');
-            opt.innerHTML = list[i];
-            opt.value = list[i];
-            iselect.appendChild(opt);
-        }
-    }
-
-    /*
-     * Thalaikya's Code Ends
-     */
-
-    function studConfirm() {
-        if(userRole == 0){
-            window.location = "reserve.html";
-        }
-    }
-
-    function instConfirm(){
-        if(userRole == 1){
-            window.location = "editmaterial.html";
-        }
-    }
-
 }());
+
+ <!-- Edit page --> /*---------------------------------------------------------------------------------------*/
+     
+     function edit_page_default(){ document.body.style.backgroundColor = "#005bbb";
+  
+    var rootRef = firebase.database().ref().child("Course").child( sessionStorage.getItem('course_selected_staff')).child("Equipment");
+    
+      rootRef.on("child_added",snap => {
+        var key = snap.key;
+       var equipName = snap.child("name").val();
+    if(equipName!=null){
+    var table = document.getElementById("dataTable");
+    var row = table.insertRow(-1);
+        row.id = key;
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+         
+    cell1.innerHTML = equipName; 
+    var btn = document.createElement('input');
+       
+btn.type = "button";
+btn.value = "Delete";
+btn.onclick = function(){deleteRow(this)};   
+
+cell2.appendChild(btn);
+}
+    });
+    
+    rootRef.on('child_changed',snap=> {
+         var key = snap.key;
+        var equipName = snap.child("name").val();
+         if(equipName!=null){
+        document.getElementById("dataTable").rows[key].cells[0].innerHTML = equipName;
+         }
+
+});}
+
+function back(){
+    window.location = "editmaterial.html";
+}
+
+function home(){
+    window.location = "Course_Details.html";
+}
+function add() {
+    var equipName = prompt("Please enter your the name of the equipment");
+    if(equipName!=null){
+        
+         var newPostRef = firebase.database().ref().child("Course").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").push();
+newPostRef.set({
+    name : equipName
+});
+       
+}
+}
+
+
+
+function deleteRow(r) {
+    
+    var i = r.parentNode.parentNode.rowIndex;
+    
+    
+   
+    var key = document.getElementById("dataTable").rows[i].id;
+   
+    var rootRef =firebase.database().ref().child("Course").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(key);
+    rootRef.remove();
+
+     document.getElementById("dataTable").deleteRow(i);
+  
+    }
+ 
+
+
+ <!-- End Edit page --> /*---------------------------------------------------------------------------------------*/
