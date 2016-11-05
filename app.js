@@ -1,15 +1,9 @@
-/**
- * Created by satya on 10/30/16.
- */
-
-
-    // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBzm4wdPhE7KD6ETeQpLdFp9B-TZSeW-7w",
-    authDomain: "my-project-testing-1386.firebaseapp.com",
-    databaseURL: "https://my-project-testing-1386.firebaseio.com",
-    storageBucket: "my-project-testing-1386.appspot.com",
-    messagingSenderId: "135686899695"
+const config = {
+    apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+    authDomain: "equipsavy.firebaseapp.com",
+    databaseURL: "https://equipsavy.firebaseio.com",
+    storageBucket: "equipsavy.appspot.com",
+    messagingSenderId: "254120319319"
   };
   firebase.initializeApp(config);
 
