@@ -39,7 +39,7 @@ body {
 
 <h3 id="Staff" ></h3>
  <select name="choose" id = "staff_select">
-     <option value="CSE442">  </option>
+     <option >  </option>
        <option value="CSE442"> CSE442 </option>
        <option value="CSE421"> CSE421 </option>
           
@@ -73,6 +73,7 @@ body {
             document.getElementById('Staff').style.visibility = 'hidden';    
             document.getElementById('staff_select').style.visibility = 'hidden';
                 document.getElementById('staff_button').style.visibility = 'hidden';
+                document.getElementById('dept').style.visibility = 'hidden';
             }
            
             console.log("works");
@@ -86,15 +87,23 @@ body {
         auth.signOut();
         window.location = "slogin.html";
     }
+    
+    function department(){
+        window.location = "depart.html"
+    }
 </script>
 
 
 
 <script type="text/javascript">
+    sessionStorage.clear();
    function nextpagestudent(){
        window.location='reserve_page.html';
    };
      function nextpagestaff(){
+         var e = document.getElementById("staff_select");    
+var strUser = e.options[e.selectedIndex].value; 
+         sessionStorage.setItem('course_selected_staff',strUser);
        window.location='editmaterial.html';
    };
 document.getElementById("course").innerHTML = "Course Details";
@@ -121,6 +130,12 @@ document.getElementById("choose").style.fontSize = "medium";
 </script>
     <br>
     <br>
+    
+    
+     <button type="button" id = "dept"  onclick="department()">Department Page</button>
+    <br>
+    <br>
+    
     
      <button type="button"  align="right" onclick="logout()">Log Out</button>
 
