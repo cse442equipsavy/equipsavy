@@ -1,0 +1,16 @@
+date: october 28, 2016
+meeting_type: group
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress: Need to get the parsed information on the page and showcase it all.}
+  {ubit: <satyakra>, progress: Firgured out how to add things to database so need to figure out how to add the role value.}
+  {ubit: <johnfinc>, progress: Pretty much done with his part of sprint 3}
+  {ubit: <thalaiky>, progress: Need to assign the role values for the user and fix the authentication so that the appropriate page shows up when user logs in.}
+  {ubit: <saiakhil>, progress: Made the front end of the department page and need to work on backend.}
+  {ubit: <abhinavm>, progress: Made the front end of the department page and need to work on backend.}
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+- Tristan will be finishing up his part of the work for sprint 3 by the end of saturday. 
+- Satya and Thalaikya will be finishing up their part of the work for sprint 3 by the end of saturday.
