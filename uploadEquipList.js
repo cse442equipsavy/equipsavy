@@ -61,14 +61,14 @@ for (i=0; i<fileContents.length; i++){//go through all file contents
     equipName.push(inputString);//add item name to position
     inputString="";//clear string
   }else{//commaNumber=2; after amount
-    equipAmount.push(parseInt(inputString));//set amount for equipAmount
+    equipAmount.push(parseInt(inputString,10));//set amount for equipAmount
     inputString="";//clear string
     // commaNumber=1;
   }
 }else if(fileContents.charAt(i)=='\n'){//after item checkoutTime
   commaNumber =1;
   // inputString=(inputString.substring(0,length-2));
-  equipCheckoutTime.push(parseInt(inputString));
+  equipCheckoutTime.push(parseInt(inputString,10));
   inputString="";//clear string
 if(i<fileContents.length-1)
   itemNum++;//increment itemNum
