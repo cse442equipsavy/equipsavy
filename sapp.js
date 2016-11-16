@@ -19,11 +19,17 @@
 const auth = firebase.auth();
 // document.getElementById('logout').style.visibility = 'hidden';
 document.getElementById("login").addEventListener("click",myFunction);
-document.getElementById("register").addEventListener("click",registerPage);
+document.getElementById("registerPage").addEventListener("click",registerPage);
+var logoutBtn = document.getElementById("logout");
 
 function registerPage(){
     window.location = "register.html";
 }
+
+logoutBtn.addEventListener('click', e => {
+    firebase.auth().signOut();
+    alert("Logged out")
+})
 
 function myFunction() {
     const password = document.getElementById('password').value;
@@ -47,14 +53,9 @@ function myFunction() {
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
-        if(userRole == 3){
-            window.location = "departmental.html";
-        }
-        else{
-            window.location="courses.html";
-            document.getElementById('login').style.visibility = 'hidden';
-            console.log("works");
-        }
+        user = firebase.auth().currentUser;
+        userID = user.uid;
+        alert(""+userID);
     }
     else{
         console.log('not logged in');
@@ -64,134 +65,34 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 <!-- Register Page --> /*------------------------------------------------------------------------------------*/
 
-const dbRefObject = firebase.database();
-document.getElementById("register").addEventListener("click",register);
-var userId, userName;
+function registerUser(){
 
-function register(){
+    const dbRefObject = firebase.database();
+    var userId, userName;
+    const auth = firebase.auth();
+    const RUseremail = document.getElementById('Remail').value;
 
-    const password = document.getElementById('password').value;
-    const email = document.getElementById('email').value;
-    auth.createUserWithEmailAndPassword(email,password).catch(function(error) {
+    const RUserpassword = document.getElementById('Rpassword').value;
+
+     auth.createUserWithEmailAndPassword(RUseremail,RUserpassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-
     });
 
-    userName = email.replace(/@.*/, '');
-    var user = firebase.auth().currentUser;
+    userName = Remail.replace(/@.*/, '');
+    var user = auth.currentUser;
     if(user != null){
         userId = user.uid;
+        alert(" Gulabi ");
     }
 
     dbRefObject.ref('users/' + userId).set({
         username: userName
     });
 
+
+
     alert("Registered");
 }
 
-<!-- Courses Page --> /*-------------------------------------------------------------------------------------*/
 
-document.getElementById("logout").addEventListener("click",logOut);
-document.getElementById("stuconfirm").addEventListener("click", studConfirm);
-document.getElementById("iconfirm").addEventListener("click", instConfirm);
-
-function logOut() {
-    alert("LogOut Function")
-    auth.signOut();
-    window.location = "slogin.html";
-}
-
-/*
- * Thalaikya's Code Begins
- */
-
-var userID = auth.currentUser.uid();
-var list = [];
-var slist = [];
-var ilist = [];
-var userRole;
-var sselect = document.getElementById("scourses");
-var iselect = document.getElementById("icourses");
-const dbObject = firebase.database().ref().child('users/' + userID);
-const dbCurrentUserCourses = dbObject.child('courses');
-const dbStuCourses = dbCurrentUserCourses.child('StudentCourses');
-const dbInstCourses =  dbCurrentUserCourses.child('InstCourses');
-const dbCurrentUserRole = dbObject.child('Role');
-
-dbStuCourses.on('child_added', snapshot => {
-
-    slist = snapshot.val();
-
-});
-
-dbInstCourses.on('child_added', snapshot => {
-
-    ilist = snapshot.val();
-
-});
-
-dbCurrentUserCourses.on('child_added', snapshot => {
-
-    list = snapshot.val();
-
-});
-
-dbCurrentUserRole.on('child_added', snapshot => {
-
-    userRole = snapshot.val();
-
-});
-
-if(userRole == 0){
-    for(var i = 0; i < list.length; i++) {
-        var opt = document.createElement('option');
-        opt.innerHTML = list[i];
-        opt.value = list[i];
-        sselect.appendChild(opt);
-    }
-}
-
-if(userRole == 2){
-    for(var i = 0; i < list.length; i++) {
-        var opt = document.createElement('option');
-        opt.innerHTML = list[i];
-        opt.value = list[i];
-        iselect.appendChild(opt);
-    }
-}
-
-if(userRole == 1){
-
-    for(var i = 0; i < slist.length; i++) {
-        var opt = document.createElement('option');
-        opt.innerHTML = slist[i];
-        opt.value = slist[i];
-        sselect.appendChild(opt);
-    }
-
-    for(var i = 0; i < ilist.length; i++) {
-        var opt = document.createElement('option');
-        opt.innerHTML = ilist[i];
-        opt.value = ilist[i];
-        iselect.appendChild(opt);
-    }
-
-}
-
-/*
- * Thalaikya's Code Ends
- */
-
-function studConfirm() {
-    if(userRole == 0){
-        window.location = "reserve.html";
-    }
-}
-
-function instConfirm(){
-    if(userRole == 1){
-        window.location = "editmaterial.html";
-    }
-}
