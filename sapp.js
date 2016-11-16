@@ -19,12 +19,12 @@
 const auth = firebase.auth();
 // document.getElementById('logout').style.visibility = 'hidden';
 document.getElementById("login").addEventListener("click",myFunction);
-document.getElementById("registerPage").addEventListener("click",registerPage);
+// document.getElementById("registerPage").addEventListener("click",registerPage);
 var logoutBtn = document.getElementById("logout");
 
-function registerPage(){
-    window.location = "register.html";
-}
+// function registerPage(){
+//     window.location = "register.html";
+// }
 
 logoutBtn.addEventListener('click', e => {
     firebase.auth().signOut();
@@ -51,48 +51,89 @@ function myFunction() {
 
 }
 
+
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
-        user = firebase.auth().currentUser;
-        userID = user.uid;
-        alert(""+userID);
+        var user = firebase.auth().currentUser;
+        var userId = user.uid;
+        var roleValue;
+
+        var roleValueRef = firebase.database().ref('Users/' + userId + '/RoleValue');
+        roleValueRef.on('value', function(snapshot) {
+            roleValue = snapshot.val();
+            if(roleValue == 0){
+                window.location = "departmental.html";
+            }
+            else {
+                window.location = "courses.html";
+            }
+        });
     }
     else{
         console.log('not logged in');
     }
 });
 
+<!-- Courses Page --> /*--------------------------------------------------------------------------------------*/
 
-<!-- Register Page --> /*------------------------------------------------------------------------------------*/
+function courses(){
 
-function registerUser(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var user = firebase.auth().currentUser;
+            var userId = user.uid;
+            var roleValue;
 
-    const dbRefObject = firebase.database();
-    var userId, userName;
-    const auth = firebase.auth();
-    const RUseremail = document.getElementById('Remail').value;
+            var roleValueRef = firebase.database().ref('Users/' + userId + '/RoleValue');
+            roleValueRef.on('value', function(snapshot) {
+                roleValue = snapshot.val();
+                if(roleValue == 1){
 
-    const RUserpassword = document.getElementById('Rpassword').value;
-
-     auth.createUserWithEmailAndPassword(RUseremail,RUserpassword).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+                }
+            });
+        } else {
+            // No user is signed in.
+        }
     });
 
-    userName = Remail.replace(/@.*/, '');
-    var user = auth.currentUser;
-    if(user != null){
-        userId = user.uid;
-        alert(" Gulabi ");
-    }
-
-    dbRefObject.ref('users/' + userId).set({
-        username: userName
-    });
-
-
-
-    alert("Registered");
 }
+
+function logOutUser(){
+    firebase.auth().signOut();
+    window.location = "slogin.html";
+}
+
+
+<!-- Register Page --> /*-------------------------------------------------------------------------------------*/
+
+// function registerUser(){
+//     var userId, userName;
+//     const dbRefObject = firebase.database();
+//
+//     const auth = firebase.auth();
+//     const RUseremail = document.getElementById('Remail').value;
+//
+//     const RUserpassword = document.getElementById('Rpassword').value;
+//
+//      auth.createUserWithEmailAndPassword(RUseremail,RUserpassword).catch(function(error) {
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//     });
+//
+//     userName = RUseremail.replace(/@.*/, '');
+//     var user = auth.currentUser;
+//     if(user != null){
+//         userId = user.uid;
+//     }
+//
+//     dbRefObject.ref('Users/' + userId).set({
+//         userName:userName
+//     });
+//
+//
+//
+//     alert("Registered");
+// }
+
 
 
