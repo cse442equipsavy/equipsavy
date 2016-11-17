@@ -37,27 +37,27 @@
 <button class = logoutLblPos id = logoutButton onclick="logOutUser()"> Log Out </button>
 
 <h1> Choose course: </h1>
+
+<select id= "scourses">
+</select>
 <br>
-<select id=" courses">
-    <option value=""></option>
-"</select>
+<br>
+<button id = stu type="submit" onclick="directToReservePage()"> Reserve Equipment </button>
+
 <br>
 <br>
-<button id = stu type="submit"> Reserve Equipment </button>
-<button id = inst type="submit"> Edit Equipment </button>
+
+<select id= "icourses">
+</select>
+<br>
+<br>
+<button id = inst type="submit" onclick="return directToEditPage()"> Edit Equipment </button>
+
 
 <script>
 document.getElementById("logoutButton").style.font = "bold Times New Roman,serif";
 document.getElementById("logoutButton").style.color = "black";
 document.getElementById("logoutButton").style.fontSize = "large";
-
-document.getElementById("stu").style.font = "bold Times New Roman,serif";
-document.getElementById("stu").style.color = "Black";
-document.getElementById("stu").style.fontSize = "large";
-
-document.getElementById("inst").style.font = "bold Times New Roman,serif";
-document.getElementById("inst").style.color = "black";
-document.getElementById("inst").style.fontSize = "large";
 </script>
 
 

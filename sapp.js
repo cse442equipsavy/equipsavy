@@ -76,6 +76,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 <!-- Courses Page --> /*--------------------------------------------------------------------------------------*/
 
+/*------------ Thalaikya's code Starts ----------------*/
+
 function courses(){
 
     firebase.auth().onAuthStateChanged(function(user) {
@@ -83,12 +85,48 @@ function courses(){
             var user = firebase.auth().currentUser;
             var userId = user.uid;
             var roleValue;
-
             var roleValueRef = firebase.database().ref('Users/' + userId + '/RoleValue');
             roleValueRef.on('value', function(snapshot) {
                 roleValue = snapshot.val();
                 if(roleValue == 1){
+                    document.getElementById('stu').style.visibility = 'hidden';
+                    document.getElementById('scourses').style.visibility = 'hidden';
+                    var dbInstCoursesList = firebase.database().ref().child('Users').child(userId).child('InstCourses');
+                    dbInstCoursesList.on('child_added',snap => {
+                        var x = document.createElement("OPTION");
+                        var t = document.createTextNode(""+snap.val());
+                        x.appendChild(t);
+                        document.getElementById('icourses').appendChild(x);
+                    });
+                }
 
+                if(roleValue == 2){
+                    var dbInstCoursesList = firebase.database().ref().child('Users').child(userId).child('InstCourses');
+                    var dbStuCoursesList = firebase.database().ref().child('Users').child(userId).child('StuCourses');
+                    dbInstCoursesList.on('child_added',snap => {
+                        var x = document.createElement("OPTION");
+                        var t = document.createTextNode(""+snap.val());
+                        x.appendChild(t);
+                        document.getElementById('icourses').appendChild(x);
+                    });
+                    dbStuCoursesList.on('child_added',snap => {
+                        var x = document.createElement("OPTION");
+                        var t = document.createTextNode(""+snap.val());
+                        x.appendChild(t);
+                        document.getElementById('scourses').appendChild(x);
+                    });
+                }
+
+                if(roleValue == 3){
+                    document.getElementById('inst').style.visibility = 'hidden';
+                    document.getElementById('icourses').style.visibility = 'hidden';
+                    var dbStuCoursesList = firebase.database().ref().child('Users').child(userId).child('StuCourses');
+                    dbStuCoursesList.on('child_added',snap => {
+                        var x = document.createElement("OPTION");
+                        var t = document.createTextNode(""+snap.val());
+                        x.appendChild(t);
+                        document.getElementById('scourses').appendChild(x);
+                    });
                 }
             });
         } else {
@@ -98,42 +136,60 @@ function courses(){
 
 }
 
+/*------------ Thalaikya's Code Ends ----------------*/
+
+function directToEditPage() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var user = firebase.auth().currentUser;
+            var userId = user.uid;
+            var roleValue;
+            var roleValueRef = firebase.database().ref('Users/' + userId + '/RoleValue');
+            roleValueRef.on('value', function(snapshot) {
+                roleValue = snapshot.val();
+                if(roleValue == 1 || roleValue == 2)  {
+                    var ic = document.getElementById('icourses');
+                    var ival = ic.options[ic.selectedIndex].value;
+                    sessionStorage.setItem("course_selected_staff", ival);
+                    window.location = "editmaterial.html";
+                }
+            });
+        }
+        else{
+            //user not signed in
+        }
+
+    });
+}
+
+function directToReservePage() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var user = firebase.auth().currentUser;
+            var userId = user.uid;
+            var roleValue;
+            var roleValueRef = firebase.database().ref('Users/' + userId + '/RoleValue');
+            roleValueRef.on('value', function(snapshot) {
+                roleValue = snapshot.val();
+                if(roleValue == 3 || roleValue == 2) {
+                    var sc = document.getElementById('scourses');
+                    var sval = sc.options[sc.selectedIndex].value;
+                    sessionStorage.setItem("course_selected_staff", sval);
+                    window.location = "reserve_page.html";
+                    return false;
+                }
+            });
+        }
+        else{
+            //user not signed in
+        }
+    });
+}
+
 function logOutUser(){
     firebase.auth().signOut();
     window.location = "slogin.html";
 }
-
-
-<!-- Register Page --> /*-------------------------------------------------------------------------------------*/
-
-// function registerUser(){
-//     var userId, userName;
-//     const dbRefObject = firebase.database();
-//
-//     const auth = firebase.auth();
-//     const RUseremail = document.getElementById('Remail').value;
-//
-//     const RUserpassword = document.getElementById('Rpassword').value;
-//
-//      auth.createUserWithEmailAndPassword(RUseremail,RUserpassword).catch(function(error) {
-//         var errorCode = error.code;
-//         var errorMessage = error.message;
-//     });
-//
-//     userName = RUseremail.replace(/@.*/, '');
-//     var user = auth.currentUser;
-//     if(user != null){
-//         userId = user.uid;
-//     }
-//
-//     dbRefObject.ref('Users/' + userId).set({
-//         userName:userName
-//     });
-//
-//
-//
-//     alert("Registered");
-// }
 
 
 
