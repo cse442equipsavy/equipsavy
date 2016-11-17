@@ -15,6 +15,7 @@
 </head>
 
 <body>
+   
     <ul class="ul">
   <li class="li"><a href="editmaterial.html">Back</a></li>
   <li class="li"><a href="Course_Details.html">Home</a></li>
@@ -24,15 +25,15 @@
   <div class="form">
       
       <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Edit Materials</a></li>
-        <li class="tab"><a href="#login">Approve</a></li>
+        <li class="tab active"><a href="#edit">Edit Materials</a></li>
+        <li class="tab"><a href="#approve">Approve</a></li>
            <li class="tab"><a href="#upload">Upload</a></li>
-          <li class="tab"><a href="#login">Tracking</a></li>
+          <li class="tab"><a href="#approve">Tracking</a></li>
            <li class="tab"><a href="#upload">Checkout</a></li>
       </ul>
       
       <div class="tab-content">
-        <div id="signup">   
+        <div id="edit">   
             <h1> Select items you wish to edit:</h1>
  <center>
    
@@ -62,7 +63,7 @@
     
         </div>
         
-        <div id="login">   
+        <div id="approve">   
             <center>
           <h1>Approve the items:</h1>
             <TABLE  >
@@ -90,13 +91,16 @@
           
           
 
-        </div>
+        </div>       
     
         
       </div><!-- tab-content -->
       
-</div>
+    </div>
     <!-- /form -->
+    
+   
+
     
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
@@ -104,8 +108,7 @@
     <script src="app.js"></script>
     <script>
    edit_page_default();
-        approve_page_default();
-  
+   approve_page_default();  
           
     </script>
    
