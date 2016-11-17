@@ -1,64 +1,115 @@
 <!DOCTYPE html>
-<HTML>
+<html >
 <head>
-    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-<style>
-.button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 64px;
-    
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-   
-}
-.button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.button1:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-.button2 {
-    background-color: white;
-    color: black;
-    border: 2px solid #008CBA;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.button2:hover {
-    background-color: #008CBA;
-    color: white;
-}
-.button3 {
-    background-color: white;
-    color: black;
-    border: 2px solid #f44336;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.button3:hover {
-    background-color: #f44336;
-    color: white;
-}
-   
-</style>
+      <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+
+  <meta charset="UTF-8">
+  <title>Staff Page</title>
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
-<body >
-<center>
-<button class = "button button1" onclick="edit()">Edit Materials </button>
-<br>
-<button class = "button button2" onclick=" approve()">Approve  </button>
-<br>
-<button class = "button button3" onclick="upload()">Upload</button>
-    <br>
 
-    </center>
-     <script src="editmaterial.js"></script>
+<body>
+    <ul class="ul">
+  <li class="li"><a href="editmaterial.html">Back</a></li>
+  <li class="li"><a href="Course_Details.html">Home</a></li>
+  <li class="li"><a onclick = "logout()">Logout</a></li>
+</ul>
     
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Edit Materials</a></li>
+        <li class="tab"><a href="#login">Approve</a></li>
+           <li class="tab"><a href="#upload">Upload</a></li>
+          <li class="tab"><a href="#login">Tracking</a></li>
+           <li class="tab"><a href="#upload">Checkout</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+            <h1> Select items you wish to edit:</h1>
+ <center>
+   
+     
+   
+  <TABLE  >
+      <thead>
+          
+      <tr>
+          <th> Name </th>
+          <th>Count</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+          </thead>
+       
+      <tbody id="dataTable"  >
+      </tbody>
+     
+    </TABLE>
+        
+    <br>
+    <br>
+     <button class = "button button-block"onclick="add()" id = "add">Add</button><br>
+     
+    </center>
+    
+        </div>
+        
+        <div id="login">   
+            <center>
+          <h1>Approve the items:</h1>
+            <TABLE  >
+      <thead>
+          
+      <tr>
+          <th> User </th>
+          <th>Equipment</th>
+          <th>Approve</th>
+          <th>Decline</th>
+      </tr>
+          </thead>
+       
+      <tbody id="approveTable"  >
+      </tbody>
+     
+    </TABLE>
+            </center> 
+
+        </div>
+          
+          <div id="upload">   
+           <h1>Upload .csv equipment list file in order 'name,amount,MaxTimeOut' on each line</h1>
+    <input type="file" id="fileInput" /><!-- upload button-->
+          
+          
+
+        </div>
+    
+        
+      </div><!-- tab-content -->
+      
+</div>
+    <!-- /form -->
+    
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+      <script src="js/index.js"></script>
+    <script src="app.js"></script>
+    <script>
+   edit_page_default();
+        approve_page_default();
+  
+          
+    </script>
+   
+    
+
 </body>
-
-
-</HTML>
+</html>
