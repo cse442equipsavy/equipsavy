@@ -17,20 +17,13 @@ const auth = firebase.auth();
 // document.getElementById('logout').style.visibility = 'hidden';
 document.getElementById("login").addEventListener("click",myFunction);
 // document.getElementById("registerPage").addEventListener("click",registerPage);
-var logoutBtn = document.getElementById("logout");
 
-// function registerPage(){
-//     window.location = "register.html";
-// }
-
-logoutBtn.addEventListener('click', e => {
-    firebase.auth().signOut();
-    alert("Logged out")
-})
 
 function myFunction() {
+
     const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
+       
     auth.signInWithEmailAndPassword(email,password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -279,15 +272,16 @@ function deleteRow(r) {
     }
 
 function editRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
-    var row = document.getElementById("dataTable").rows[i];
-    var name = prompt("change the name:",row.cells[0].innerHTML);
-    var count = prompt("change the count:",row.cells[1].innerHTML);
-    if (name!=null){row.cells[0].innerHTML = name;}
-    if (count!=null){ row.cells[1].innerHTML = count;}
-    window.alert(name+" "+count);
-    var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(row.id);
-    rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
+    location.href = '#modal-one';
+//    var i = r.parentNode.parentNode.rowIndex;
+//    var row = document.getElementById("dataTable").rows[i];
+//    var name = prompt("change the name:",row.cells[0].innerHTML);
+//    var count = prompt("change the count:",row.cells[1].innerHTML);
+//    if (name!=null){row.cells[0].innerHTML = name;}
+//    if (count!=null){ row.cells[1].innerHTML = count;}
+//    window.alert(name+" "+count);
+//    var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(row.id);
+//    rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
     }
  
 
