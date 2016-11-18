@@ -33,7 +33,7 @@ Output Format:
 <input type="radio" name="format" value="form"> FORMULAE<br> -->
 
 <div id="drop">Drop an XLSX / XLSM / XLSB / ODS / XLS / XML file here to see sheet data</div>
-<p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
+<p><input type="file" name="xlfile" id="fileInput" /> ... or click here to select a file</p>
 <textarea id="b64data">... or paste a base64-encoding here</textarea>
 <input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
 Advanced Demo Options: <br />
@@ -49,7 +49,19 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
 <script src="xlsx.js"></script>
 <!-- uncomment the next line here and in xlsxworker.js for ODS support -->
 <script src="dist/ods.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+
 <script>
+
+var config = {
+		apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+		authDomain: "equipsavy.firebaseapp.com",
+		databaseURL: "https://equipsavy.firebaseio.com",
+		storageBucket: "equipsavy.appspot.com",
+		messagingSenderId: "254120319319"
+	};
+	firebase.initializeApp(config);
+
 var X = XLSX;
 var XW = {
 	/* worker message */
@@ -61,19 +73,19 @@ var XW = {
 };
 
 var rABS = typeof FileReader !== "undefined" && typeof FileReader.prototype !== "undefined" && typeof FileReader.prototype.readAsBinaryString !== "undefined";
-if(!rABS) {
+if(true) {
 	document.getElementsByName("userabs")[0].disabled = true;
 	document.getElementsByName("userabs")[0].checked = false;
 }
 
 var use_worker = typeof Worker !== 'undefined';
-if(!use_worker) {
+if(true) {
 	document.getElementsByName("useworker")[0].disabled = true;
 	document.getElementsByName("useworker")[0].checked = false;
 }
 
 var transferable = use_worker;
-if(!transferable) {
+if(true) {
 	document.getElementsByName("xferable")[0].disabled = true;
 	document.getElementsByName("xferable")[0].checked = false;
 }
@@ -161,8 +173,8 @@ function to_csv(workbook) {
 	workbook.SheetNames.forEach(function(sheetName) {
 		var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
 		if(csv.length > 0){
-			result.push("SHEET: " + sheetName);
-			result.push("");
+			// result.push("SHEET: " + sheetName);
+			// result.push("");
 			result.push(csv);
 		}
 	});
@@ -202,7 +214,60 @@ function process_wb(wb) {
 		output = to_csv(wb);
 	}
 	if(out.innerText === undefined) out.textContent = output;
-	else out.innerText = output;
+	else {out.innerText = output;
+		alert(output);
+//**********************Start of John Code**********************************
+
+ var commaNumber=1;
+ var outputNameString ="";
+
+var inputString = "";//string that gets characters loaded into temporarily
+var itemNum=0;//keeps track of which item number in list
+var equipName=[];//equipname list
+var equipAmount=[];//equipAmount list
+var equipCheckoutTime=[];//equipCheckoutTime list
+
+for (i=0; i<output.length; i++){//go through all file contents
+  if (output.charAt(i)==','){//if a comma, splice
+
+  if (commaNumber==1){//commanumber 1 means comma after name; 2 is after amount
+    commaNumber=2;
+    equipName.push(inputString);//add item name to position
+    inputString="";//clear string
+  }else{//commaNumber=2; after amount
+    equipAmount.push(parseInt(inputString,10));//set amount for equipAmount
+    inputString="";//clear string
+    // commaNumber=1;
+  }
+}else if(output.charAt(i)=='\n'){//after item checkoutTime
+  commaNumber =1;
+  // inputString=(inputString.substring(0,length-2));
+  equipCheckoutTime.push(parseInt(inputString,10));
+  inputString="";//clear string
+if(i<output.length-1)
+  itemNum++;//increment itemNum
+  }else {//not a comma or \n
+    if (output.charAt(i)!='\r')//end of line is \r\n, so ignore \r
+  inputString+=output.charAt(i);//adds character to string
+  }
+
+}
+equipCheckoutTime.push(inputString);
+console.log("Finished parsing, line 100\n");
+for (i=0; i<=itemNum;i++){//uploads info to list
+  firebase.database().ref('courses/CSE442/Equipment/'+equipName[i] ).set({
+      item: equipName[i],
+      amount: equipAmount[i],
+      checkoutTime: equipCheckoutTime[i]
+    });
+
+}
+
+
+//************************************************************End of John Code********************
+	}
+
+
 	if(typeof console !== 'undefined') console.log("output", new Date());
 }
 
@@ -251,7 +316,7 @@ if(drop.addEventListener) {
 }
 
 
-var xlf = document.getElementById('xlf');
+var fileInput = document.getElementById('fileInput');
 function handleFile(e) {
 	rABS = document.getElementsByName("userabs")[0].checked;
 	use_worker = document.getElementsByName("useworker")[0].checked;
@@ -281,7 +346,7 @@ function handleFile(e) {
 	}
 }
 
-if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+if(fileInput.addEventListener) fileInput.addEventListener('change', handleFile, false);
 </script>
 </body>
 </html>
