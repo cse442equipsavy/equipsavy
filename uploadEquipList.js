@@ -1,60 +1,84 @@
 
 
-  //This file places the upload bar and uploads the file to the database in the JJ_TestUploads folder
+
+var config = {
+		apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+		authDomain: "equipsavy.firebaseapp.com",
+		databaseURL: "https://equipsavy.firebaseio.com",
+		storageBucket: "equipsavy.appspot.com",
+		messagingSenderId: "254120319319"
+	};
+	firebase.initializeApp(config);
+
+var X = XLSX;
+var XW = {
+	/* worker message */
+	msg: 'xlsx',
+	/* worker scripts */
+	rABS: './xlsxworker2.js',
+	norABS: './xlsxworker1.js',
+	noxfer: './xlsxworker.js'
+};
 
 
 
-    // Initialize Firebase equipsavy
-    var config = {
-      apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
-      authDomain: "equipsavy.firebaseapp.com",
-      databaseURL: "https://equipsavy.firebaseio.com",
-      storageBucket: "equipsavy.appspot.com",
-      messagingSenderId: "254120319319"
-    };
-    firebase.initializeApp(config);
+function to_json(workbook) {
+	var result = {};
+	workbook.SheetNames.forEach(function(sheetName) {
+		var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+		if(roa.length > 0){
+			result[sheetName] = roa;
+		}
+	});
+	return result;
+}
+
+function to_csv(workbook) {
+	var result = [];
+	workbook.SheetNames.forEach(function(sheetName) {
+		var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+		if(csv.length > 0){
+			// result.push("SHEET: " + sheetName);
+			// result.push("");
+			result.push(csv);
+		}
+	});
+	return result.join("\n");
+}
 
 
-//end of codebase uplaod from firebase docs
 
-//get uploaded file and put info in alert
-function readFromFile(evt) {
-   var fileObject = evt.target.files[0]; //file object is f; first file is at [0]
+function process_wb(wb) {
+	var output = "";
+	// switch("json") {
+	// 	case "json":
+	// 		output = JSON.stringify(to_json(wb), 2, 2);
+	// 		break;
+	// 	case "form":
+	// 		output = to_formulae(wb);
+	// 		break;
+	// 	default:
+	// 	output = to_csv(wb);
+	// }
 
-
-
-  if (fileObject) {//if a file was uploaded
-
-
-var r = new FileReader();//create fileReader object
-r.onload = function(e) {//when the file is loaded, run this function
-    var fileContents = e.target.result;//load the contents of file into object
+  output = to_csv(wb);
+	// if(out.innerText === undefined) out.textContent = output;
+	// else
+  {//out.innerText = output;
+		alert(output);
+//**********************Start of John Code**********************************
 
  var commaNumber=1;
  var outputNameString ="";
-/*for (i=0;i<fileContents.length;i++){
-if (fileContents.charAt(i)==','){
-outputNameString +=" ";
-if (commaNumber==1)//commanumber 1 means comma after name; 2 is after amount
-commaNumber=2;
 
-}else if (fileContents.charAt(i)=='\n'){
-commaNumber =1;
-outputNameString+="\n";//adds enter key
-}else {//not a comma or \n
-if (commaNumber==1)
-outputNameString+=fileContents.charAt(i);//adds character to string
-}
-}*/
-console.log("made it to 71\n");
 var inputString = "";//string that gets characters loaded into temporarily
 var itemNum=0;//keeps track of which item number in list
 var equipName=[];//equipname list
 var equipAmount=[];//equipAmount list
 var equipCheckoutTime=[];//equipCheckoutTime list
 
-for (i=0; i<fileContents.length; i++){//go through all file contents
-  if (fileContents.charAt(i)==','){//if a comma, splice
+for (i=0; i<output.length; i++){//go through all file contents
+  if (output.charAt(i)==','){//if a comma, splice
 
   if (commaNumber==1){//commanumber 1 means comma after name; 2 is after amount
     commaNumber=2;
@@ -65,16 +89,16 @@ for (i=0; i<fileContents.length; i++){//go through all file contents
     inputString="";//clear string
     // commaNumber=1;
   }
-}else if(fileContents.charAt(i)=='\n'){//after item checkoutTime
+}else if(output.charAt(i)=='\n'){//after item checkoutTime
   commaNumber =1;
   // inputString=(inputString.substring(0,length-2));
   equipCheckoutTime.push(parseInt(inputString,10));
   inputString="";//clear string
-if(i<fileContents.length-1)
+if(i<output.length-1)
   itemNum++;//increment itemNum
   }else {//not a comma or \n
-    if (fileContents.charAt(i)!='\r')//end of line is \r\n, so ignore \r
-  inputString+=fileContents.charAt(i);//adds character to string
+    if (output.charAt(i)!='\r')//end of line is \r\n, so ignore \r
+  inputString+=output.charAt(i);//adds character to string
   }
 
 }
@@ -88,33 +112,51 @@ for (i=0; i<=itemNum;i++){//uploads info to list
     });
 
 }
-console.log("Finished uploading, line 1-0\n");
-
-      //document.getElementById("p1").innerHTML = fileContents;
-/*var i =0;
-var indexEnter =fileContents.IndexOf("\n");
-var indexComma =fileContents.IndexOf(",");
-itemNames[i]= fileContents.slice(indexComma-1);
-i++;
 
 
-while(i<3){//3 for testing, normally go through all items
-indexComma = (fileContents.substring(indexEnter)).IndexOf(",");
-indexEnter = (fileContents.substring(indexComma)).IndexOf(",");
-var tempString =fileContents.substring(indexEnter+1,indexComma-1);
-itemNames[i]=tempString;
-var tempId = "box"+i;
-document.getElementById(tempId).innerHTML = tempString;
-i++;
-}*/
-
-    }
-    r.readAsText(fileObject);
+//************************************************************End of John Code********************
+	}
 
 
-
-  } else {//if a file was not uploaded
-    alert("No File was uploaded");
-  }
+	if(typeof console !== 'undefined') console.log("output", new Date());
 }
-document.getElementById('fileInput').addEventListener('change', readFromFile, false);
+
+
+function fixdata(data) {
+	var o = "", l = 0, w = 10240;
+	for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
+	o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(l*w)));
+	return o;
+}
+
+var fileInput = document.getElementById('fileInput');
+function handleFile(e) {
+	rABS = false;// document.getElementsByName("userabs")[0].checked;
+	use_worker = false;//document.getElementsByName("useworker")[0].checked;
+	var files = e.target.files;
+	var f = files[0];
+	{
+		var reader = new FileReader();
+		var name = f.name;
+		reader.onload = function(e) {
+			if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
+			var data = e.target.result;
+			if(use_worker) {
+				xw(data, process_wb);
+			} else {
+				var wb;
+				if(rABS) {
+					wb = X.read(data, {type: 'binary'});
+				} else {
+				var arr = fixdata(data);
+					wb = X.read(btoa(arr), {type: 'base64'});
+				}
+				process_wb(wb);
+			}
+		};
+		if(rABS) reader.readAsBinaryString(f);
+		else reader.readAsArrayBuffer(f);
+	}
+}
+
+if(fileInput.addEventListener) fileInput.addEventListener('change', handleFile, false);
