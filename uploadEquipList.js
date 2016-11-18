@@ -105,7 +105,7 @@ if(i<output.length-1)
 equipCheckoutTime.push(inputString);
 console.log("Finished parsing, line 100\n");
 for (i=0; i<=itemNum;i++){//uploads info to list
-  firebase.database().ref('courses/CSE442/Equipment/'+equipName[i] ).set({
+  firebase.database().ref('courses/'+sessionStorage.get("course_selected")+'/Equipment/'+equipName[i] ).set({
       item: equipName[i],
       amount: equipAmount[i],
       checkoutTime: equipCheckoutTime[i]
