@@ -38,14 +38,7 @@ input, button {
   border: none;
 }
 
-.cont {
-  position: relative;
-  height: 100%;
-  background-image: url("images/drone.jpg");
-  background-size: cover;
-  overflow: auto;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
+
 
 .demo {
   position: absolute;
@@ -186,8 +179,8 @@ color: #FDFCFD;
     width: 5em;
     white-space:nowrap;
     overflow:hidden;
-    -webkit-animation: type 2.5s steps(50, end);
-    animation: type 2.5s steps(50, end);
+    -webkit-animation: type 3s steps(20, end) ;
+    animation: type 3s steps(20, end) ;
 }
 
 @keyframes type{
@@ -200,5 +193,22 @@ color: #FDFCFD;
 
 
     
+#background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+}
+.container h1 {
+    color: white;
+}
 
     
