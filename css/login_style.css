@@ -41,7 +41,7 @@ input, button {
 .cont {
   position: relative;
   height: 100%;
-  background-image: url("drone.jpg");
+  background-image: url("images/drone.jpg");
   background-size: cover;
   overflow: auto;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -91,6 +91,7 @@ input, button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .login__icon {
+    cursor: default;
   margin-bottom: -0.4rem;
   margin-right: 0.5rem;
 }
@@ -179,8 +180,8 @@ input, button {
 .css-typing
 {   font-size: 50px;
 color: #FDFCFD;
-    
-    font-family: Century Gothic, sans-serif;
+    cursor: default;
+       font-family: Century Gothic, sans-serif;
     padding-top: 50%;
     width: 5em;
     white-space:nowrap;
@@ -197,20 +198,7 @@ color: #FDFCFD;
     from { width: 0; }
 }
 
-/////////////////////////
-#loader-wrapper .loader-section {
-    position: fixed;
-    top: 0;
-    width: 51%;
-    height: 100%;
-    background: #222222;
-    z-index: 1000;
-}
- 
-#loader-wrapper .loader-section.section-left {
-    left: 0;
-}
- 
-#loader-wrapper .loader-section.section-right {
-    right: 0;
-}
+
+    
+
+    

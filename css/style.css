@@ -8,7 +8,7 @@ html {
 }
 
 body {
-   background: url(library.jpg) no-repeat center center fixed; 
+   background: url(images/library.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -101,6 +101,38 @@ a:hover {
   background: #008CBA;
   color: #ffffff;
 }
+.tab-group3 {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.tab-group3:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group3 li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 33.33%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+.tab-group3 li a:hover {
+  background: #006080;
+  color: #ffffff;
+}
+.tab-group3 .active a {
+  background: #008CBA;
+  color: #ffffff;
+}
 
 .tab-content > div:not(:first-child) {
   display: none;
@@ -111,13 +143,18 @@ h1 {
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
+     cursor: default;
+}
+
+select{
+     cursor: pointer;
 }
 
 label {
-  position: absolute;
+  position: relative;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
-  left: 13px;
+  left: 25%;
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
@@ -181,11 +218,15 @@ label.highlight {
 }
 .button:hover, .button:focus {
   background: #006080;
+     cursor: pointer;
 }
 
 .button-block {
   display: block;
   width: 35%;
+}
+.button-block2 {
+  width: 25%;
 }
 
 
@@ -204,6 +245,7 @@ label.highlight {
 }
 
 	.btn:hover {
+         cursor: pointer;
 		background-color: #e3e3e3;
 		border-color: rgba(0,0,0,0.5);
 	}
@@ -225,8 +267,7 @@ table {
     width: 90%;
      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     align-content: center;
-    
-  
+  cursor: default;
 }
 
 th, td {
@@ -255,6 +296,7 @@ th {
 }
 
 .li {
+    cursor: pointer;
     float: left;
 }
 .li:last-child { float:right; }
@@ -349,36 +391,3 @@ th {
   
 }
 
-//
-// Modal
-// ----------------------
-
-.modal{
-  
-   
-  // This is modal bg
-  &:before{
-    content: ""; 
-    display: none;
-    background: rgba(0,0,0,.6);
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0; 
-    z-index: 10;
-  }
-  
-  &:target{
-     
-    // Active animate in modal
-    &:before{
-      display: block;
-    }  
-    .modal-dialog{
-      .translate(0, 0); 
-      top: 20%;  
-    }
-     
-  }
-  
-}
-
-/
