@@ -1,0 +1,89 @@
+<html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<head><script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script></head>
+<style>
+    h1{
+        clear: left;
+        text-align: left;
+    }
+    body {
+        height: 200px;
+        width: 400px;
+        position: fixed;
+        top: 20%;
+        left: 33%;
+        margin-top: -100px;
+        margin-left: -200px;
+    }
+</style>
+
+<body>
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDo_SFzJLYl7VCZm4tJoY7-5Xe5hopVL18",
+    authDomain: "equipsavy.firebaseapp.com",
+    databaseURL: "https://equipsavy.firebaseio.com",
+    storageBucket: "equipsavy.appspot.com",
+    messagingSenderId: "254120319319"
+  };
+  firebase.initializeApp(config);
+        function register(){
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+            alert("Successful!")
+            window.location = "slogin.html";
+        }
+    
+</script>
+<P> <center> <font size = "5" > <b> <h2> Registeration Page </h2> </b> </font> </center> </p>
+
+<center>
+    <br>
+    <input id= "email" type = "email" name = "email" placeholder = "UBITName">
+    <br>
+    <br>
+    <input id= "password" type = "password" name = "password" placeholder = "password"> <br>
+    <br>
+    <br>
+    <input id= "rpassword" type = "password" name = "rpassword" placeholder = "re-password"> <br>
+    <br>
+    <br>
+    <Button id= "register" name="register"  onclick = "register()"> Register </Button><br>
+</center>
+
+<script src="app.js"></script>
+
+<script>
+    document.getElementById("email").style.font = "Times New Roman,serif";
+    document.getElementById("email").style.color = "Black";
+    document.getElementById("email").style.fontSize = "x-large";
+    document.body.style.backgroundColor = "#005bbb";
+    document.getElementById("password").style.font = "bold Times New Roman,serif";
+    document.getElementById("password").style.color = "Black";
+    document.getElementById("password").style.fontSize = "x-large";
+    document.getElementById("rpassword").style.font = "bold Times New Roman,serif";
+    document.getElementById("rpassword").style.color = "Black";
+    document.getElementById("rpassword").style.fontSize = "x-large";
+    document.getElementById("Register").style.font = "bold Times New Roman,serif";
+    document.getElementById("Register").style.color = "black";
+    document.getElementById("Register").style.fontSize = "large";
+</script>
+</body>
+</html>

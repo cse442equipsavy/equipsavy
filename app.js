@@ -16,11 +16,10 @@
 const auth = firebase.auth();
 // document.getElementById('logout').style.visibility = 'hidden';
 document.getElementById("login").addEventListener("click",myFunction);
-// document.getElementById("registerPage").addEventListener("click",registerPage);
 
 
 function myFunction() {
-
+   
     const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
        
@@ -30,9 +29,12 @@ function myFunction() {
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
+            document.getElementById("loginMessage").innerHTML = "Wrong password";
+            showpopup();
+            
         } else {
-            alert(errorMessage);
+            document.getElementById("loginMessage").innerHTML = errorMessage;
+            showpopup();
         }
         console.log(error);
         document.getElementById("login").disabled = false;
@@ -142,6 +144,7 @@ function directToEditPage() {
                     var ival = ic.options[ic.selectedIndex].value;
                     sessionStorage.setItem("course_selected_staff", ival);
                     window.location = "editmaterial.html";
+                    return false;
                 }
             });
         }
@@ -216,6 +219,7 @@ del.value = "Delete";
 del.onclick = function(){deleteRow(this)}; 
         var edit = document.createElement('input');       
 edit.type = "button";
+        edit.id = "edit";
 edit.value = "Edit";
 edit.className = "btn";        
 edit.onclick = function(){editRow(this)};
@@ -243,19 +247,13 @@ function logout() {
     }
     
 
-function back(){
-    window.history.go(-1);
-}
 
-function home(){
-    window.location = "Course_Details.html";
-}
 function add() {
     var equipName = prompt("Please enter the name of the equipment");
     var equipCount = prompt("Please enter the count of the equipment");
     if(equipName!=null && equipCount!=null){
         
-         var newPostRef = firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").push();
+         var newPostRef = firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(equipName);
 newPostRef.set({
     item: equipName,
     amount : equipCount
@@ -272,17 +270,38 @@ function deleteRow(r) {
     }
 
 function editRow(r) {
-    location.href = '#modal-one';
-//    var i = r.parentNode.parentNode.rowIndex;
-//    var row = document.getElementById("dataTable").rows[i];
-//    var name = prompt("change the name:",row.cells[0].innerHTML);
-//    var count = prompt("change the count:",row.cells[1].innerHTML);
-//    if (name!=null){row.cells[0].innerHTML = name;}
-//    if (count!=null){ row.cells[1].innerHTML = count;}
-//    window.alert(name+" "+count);
-//    var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(row.id);
-//    rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
+    var i = r.parentNode.parentNode.rowIndex-1;
+    var row = document.getElementById("dataTable").rows[i];
+     document.getElementById("rowID").innerHTML = row.id;
+     document.getElementById("itemName").value = row.cells[0].innerHTML;
+     document.getElementById("amountInput").value = row.cells[1].innerHTML;
+   
     }
+
+function yesEdit() {
+    var id = document.getElementById("rowID").innerHTML;
+   var row = document.getElementById(id);
+    
+    var name = document.getElementById("itemName").value;
+    var count = document.getElementById("amountInput").value;
+    
+    var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(id);
+    
+    if(id != name){
+         rootRef.remove();
+         row.parentNode.removeChild(row);
+        rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(name);
+    }
+    
+    if (name!=null){row.cells[0].innerHTML = name;}
+   if (count!=null){ row.cells[1].innerHTML = count;}
+    
+    
+    rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
+  
+    
+    }
+
  
 
 
@@ -360,6 +379,7 @@ function decline(r) {
       rootRef.on("child_added",snap => {
         var key = snap.key;
        var equipName = snap.child("item").val();
+         
           
           var equipCount = snap.child("amount").val();
           if(equipCount>0){
@@ -395,9 +415,9 @@ cell2.appendChild(sel);
 
 });}
 
-function select(){
-    var r = confirm("are you sure?");
-    if(r == true){
+function yes_button_click(){
+   
+    
     checkboxes = document.getElementsByTagName("input"); 
 
 for (var i = 0; i < checkboxes.length; i++) {
@@ -416,27 +436,13 @@ for (var i = 0; i < checkboxes.length; i++) {
                  user: firebase.auth().currentUser.email});
  }   
 }
-        home();
-}
+       
+    window.location = "Course_Details.html";
+
 }
 
    
     
 <!-- End reserve page --> /*---------------------------------------------------------------------------------------*/
-     
-<!--  Editmaterial page --> /*---------------------------------------------------------------------------------------*/
 
-function edit() {
-window.location = "edit_page.html";
-}
-
-function upload() {
-window.location = "UploadEquipmentList.html";
-}
-
-function approve() {
-window.location = "approve.html";
-}
-   
     
-<!-- End Editmaterial page --> /*---------------------------------------------------------------------------------------*/
