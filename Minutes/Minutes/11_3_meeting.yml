@@ -1,0 +1,25 @@
+date: November 3rd, 2016
+meeting_type: Group Meeting
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+absent: [None]
+excused_absences: [ # Any legitamite excuses for absent team members]
+  
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress: no progress(first meeting of new sprint)}
+  {ubit: <satyakra>, progress: no progress(first meeting of new sprint)}
+  {ubit: <johnfinc>, progress: no progress(first meeting of new sprint)}
+  {ubit: <saiakhil>, progress: no progress(first meeting of new sprint)}
+  {ubit: <abhinavm>, progress: no progress(first meeting of new sprint)}
+  {ubit: <thalaiky>, progress: no progress(first meeting of new sprint)}
+  
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <ubit2>, issue: },
+  {ubit: <ubit6>, issue: }
+  ]
+  
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  - backend done by 16th
+  - front end done by the end of the sprint
+  -basically just finishing up everything that we were working on last sprint with same division of labor
+  -may try reading from .xlsx format instead of .csv(maybe)
