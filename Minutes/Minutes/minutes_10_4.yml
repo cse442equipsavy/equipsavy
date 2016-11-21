@@ -1,0 +1,24 @@
+date: September 28, 2016
+meeting_type: group
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+
+
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress:learning django but having difficulty is meeting with saiakhil}
+  {ubit: <satyakra>, progress: learning django using tutorials}
+  {ubit: <johnfinc>, progress: finished django tutorials, wrote a python script that parses through files}
+  {ubit: <saiakhil>, progress: wrote php code for authentification and is learning firebase}
+  {ubit: <abhinavm>, progress: learning firebase and working on css and front end material}
+  {ubit: <thalaiky>, progress: finished the html css versions of webpage will be converting to javascript}
+
+
+
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <everyone>, issue: we are having trouble deciding if we want to continue using django.}
+
+  ]
+
+Notes:  []| # Anything covered in the meeting that doesn't fit elsewhere.
+  {ubit: <everyone>, note: we are watching the firebase tutorials tonight to see if that is what we want to use.}
+  ]-

@@ -1,0 +1,28 @@
+date: November 9, 2016
+meeting_type: TA Meeting
+attendance: [thalaiky, satyakra, johnfinc]
+excused_absences: [
+<saiakhil>: Had a quiz
+<abhinavm>: Had a quiz
+<tgsyre>: Had to deal with financial/academic crisis with parents
+]
+
+task_progress: [ 
+  {ubit: <thalaiky>, progress: Completed the stuff needed for Sprint 3, needed to finish the git hub issues},
+  {ubit: <satyakra>, progress: Completed the stuff needed for Sprint 3, needed to finish the git hub issues},
+  {ubit: <johnfinc>, progress: Completed the stuff needed for Sprint 3, needed to finish the git hub issues},
+  
+  ]
+
+issues: [{No Issues}
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+- Fix up the bugs needed for the sprint 4 
+- Expecting everything to be done by November 16th for backend and then focus on making the 
+website pretty by the end of sprint 4
+- Andy suggested to use materialize which is a google Framework for JS and CSS and suggests
+way in how we can make the website looks nice and pretty. 
+- Everyone should create their github issues by the end of next week
+- Follow naming convention when doing the meeting mins #formonth_#ofthedate
+- Only upload/commit to your own personal branch and ONLY merge to Developer & Master

@@ -1,0 +1,24 @@
+date: October 19, 2016
+meeting_type: TA
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+absent: [None]
+
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress: Nothing since sprint 2.}
+  {ubit: <satyakra>, progress: Working with Thalaikya on authentication part. Figuring out how to use the firebase database.}
+  {ubit: <johnfinc>, progress: Adding information directly onto a html page from a spreadsheet/ external file}
+  {ubit: <saiakhil>, progress: Figuring out how to get started on improving the reservation, checkout, and editing Equipments. }
+  {ubit: <abhinavm>, progress: figuring out how to start on the deparmental page. To meet with Akhil. }
+  {ubit: <thalaiky>, progress: Working with Satya to figure out how to upload items on the database and access them. }
+  
+  ]
+issues: []
+  
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  -Made sure everyone knows what they are doing
+  -Discussed issue with meeting minutes being misdated
+  -Satya and Thalaikya to meet with each other to figure out firebase database
+and work on the authentication
+  -Akhil and Abhinav to meet up to work on the edit, reserve, and checkout equipments and the deparatmental page.
+  -JJ continue to work on how to get the information uploaded onto firebase database.
+  -Tristan to continue to working on putting the parsed file on the database. 

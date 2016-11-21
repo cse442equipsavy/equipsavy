@@ -1,0 +1,33 @@
+date: November 14, 2016
+
+meeting_type: group
+
+attendance: [thalaiky, satyakra, tgsyre2, johnfinc, saiakhil, abhinavm]
+
+absent: [No Absences ]
+
+excused_absences: [ No Excused Absences ]
+
+task_progress: [ 
+
+  {ubit: <thalaiky>, progress: Working to wrap up authentication and courses page},
+
+  {ubit: <satyakra>, progress: Working to wrap up authentication and courses page},
+
+  {ubit: <tgsyre>, progress: Still figuring out on bringing data from the database to the equipment display page},
+
+  {ubit: <johnfinc>, progress: Finished course upload page, so will be helping out Tristan},
+
+  {ubit: <saiakhil>, progress: Worked on edit page, reserve page and trying to finish loose ends},
+
+  {ubit: <abhinavm>, progress: Working on the departmental page}
+
+  ]
+
+issues: [{No Issues}
+
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+- Deadline is November 16th to wrap up things for backend and will be working on front ends
+- Everyone has to submit their issues

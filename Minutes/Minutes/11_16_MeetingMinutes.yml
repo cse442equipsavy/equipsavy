@@ -1,0 +1,32 @@
+date: November 16, 2016
+
+meeting_type: ta 
+
+attendance: [thalaiky, satyakra, tgsyre2, johnfinc, saiakhil, abhinavm]
+
+absent: [No Absences ]
+
+excused_absences: [ No Excused Absences ]
+
+task_progress: [ 
+
+  {ubit: <thalaiky>, progress: Wraping up course details page.},
+
+  {ubit: <satyakra>, progress: Implemented role values for different users},
+
+  {ubit: <tgsyre>, progress: Working on displaying equipment list},
+
+  {ubit: <johnfinc>, progress: Working on a way to upload data to FireBase(equipment page)},
+
+  {ubit: <saiakhil>, progress: Done with login page and checkout page(BackEnd), working on the FrontEnd for the same},
+
+  {ubit: <abhinavm>, progress: Working on Department page(FrontEnd and BackEnd)}
+
+  ]
+
+issues: [{ubit: <everyone>,Switching to FireBase from Django for backend development}
+
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  
