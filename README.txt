@@ -27,4 +27,6 @@ Software:
 -	Firebase has a built-in authentication which allow different users different levels of access into the site.
 -	We also used firebase’s real-time database to store data such as equipment name and quantity.
 
-Libraries:
+External Library Reference:
+-https://github.com/SheetJS/js-xlsx
+This library was used in order to upload files in a multitude of formats including xlsx, the default format for Microsoft Excel files
