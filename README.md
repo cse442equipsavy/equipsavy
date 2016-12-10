@@ -2,7 +2,7 @@
 
 ####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
 
-######Semi working web version : http://equipsavy.000webhostapp.com/
+######Semi working web version : <a href="http://equipsavy.000webhostapp.com/"> link</a>
 
 ##Overview:
 Equipsavy is a web application with the functionality to share equipment effectively in a class. To Log onto the website, first log onto
