@@ -2,6 +2,7 @@
 
 ####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
 ![](/images/equipsavy.gif?raw=true "Loginpage")
+![](/images/git.jpg?raw=true "Loginpage")
 ######Semi working web version : <a target="_blank" href="http://equipsavy.000webhostapp.com/">EquipSavy</a>
 
 ##Overview:
