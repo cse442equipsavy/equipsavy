@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @akhilpen
- Watch 3
-  Star 2
- Fork 0 cse442equipsavy/equipsavy
- Code  Issues 18  Pull requests 5  Projects 0  Wiki  Pulse  Graphs
-Branch: Developer Find file Copy pathequipsavy/README.txt
-541ea77  a minute ago
-@akhilpen akhilpen Update README.txt
-4 contributors @thalaiky @tgsyre @akhilpen @cooljjkid
-RawBlameHistory     
-39 lines (30 sloc)  2.26 KB
 #EquipSavy
 
 ####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
