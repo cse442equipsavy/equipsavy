@@ -1,10 +1,12 @@
 $(document).ready(function(){
+    
  $("#select").click(function(){
   showpopup();
  });
     $("#edit").click(function(){
   showpopup();
  });
+    
  $("#no_button").click(function(){
   hidepopup();
  });

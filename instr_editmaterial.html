@@ -8,15 +8,13 @@
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  
-      <link rel="stylesheet" href="css/style.css">
-
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script type="text/javascript" src="jquery.js"></script>
         
-  
-</head>
     
+  
+      <link rel="stylesheet" href="css/style.css">
+
     <style>
 input[type=text] {
     width: 50%;
@@ -28,9 +26,9 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-     border: 2.5px solid #008CBA;
+    background-color: lightblue;
 }
-        #drop{
+          #drop{
 	border:2px dashed #bbb;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -40,6 +38,10 @@ input[type=text]:focus {
 	font:20pt bold,"Vollkorn";color:#bbb
 }
 </style>
+  
+</head>
+    
+  
 
 <body>
    
@@ -51,12 +53,12 @@ input[type=text]:focus {
     
   <div class="form">
       
-      <ul class="tab-group4">
+      <ul class="tab-group">
         <li class="tab active"><a href="#edit">Edit Materials</a></li>
         <li class="tab"><a href="#approve">Approve</a></li>
-          <li class="tab"><a href="#tracking">Tracking</a></li>
+           <li class="tab"><a href="#tracking">Tracking</a></li>
            <li class="tab"><a href="#upload">Upload</a></li>
-          
+          <li class="tab"><a href="#ta">TA</a></li>
           
       </ul>
       
@@ -112,7 +114,8 @@ input[type=text]:focus {
             </center> 
 
         </div>
-           <div id = "tracking">
+          
+          <div id = "tracking">
               <center>
               <TABLE  >
       <thead>
@@ -134,8 +137,7 @@ input[type=text]:focus {
           </div>
           
           <div id="upload">   
-         
-          
+           
               <h1>Upload  equipment list file in order 'name,amount,MaxTimeOut' on each line</h1>
               
               <div style = "visibility: hidden">
@@ -163,13 +165,36 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
 
 <br />
           </div>
-              
+
         </div>   
           
          
           
+            <div id="ta"> 
+            <h1>Add or Remove TA</h1>
+         <center>
+         <TABLE  >
+      <thead>
           
+      <tr>
+          <th>UBIT Name </th>
+          <th>Remove</th>
+      </tr>
+          </thead>
+       
+      <tbody id="TAtable"  >
+      </tbody>
+     
+    </TABLE>
+                <br><br>
+ 
+  
+           
+            <button class="button button-block" onclick="add_staff()">add</button>
+            </center>
+             </div>
     
+          
         
       </div><!-- tab-content -->
       
@@ -189,7 +214,8 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
        <br>
  </div> 
 
-    <script src="js_xlsx/shim.js"></script>
+    <!--<script src="dist/cpexcel.js"></script>-->
+<script src="js_xlsx/shim.js"></script>
 <script src="js_xlsx/jszip.js"></script>
 <script src="js_xlsx/xlsx.js"></script>
 <!-- uncomment the next line here and in xlsxworker.js for ODS support -->
@@ -400,7 +426,7 @@ if(i<output.length-1)
 equipCheckoutTime.push(inputString);
 console.log("Finished parsing, line 100\n");
 for (i=0; i<=itemNum;i++){//uploads info to list
-  firebase.database().ref('courses/'+sessionStorage.getItem(course_selected_staff)+'/Equipment/'+equipName[i] ).set({
+  firebase.database().ref('courses/CSE442/Equipment/'+equipName[i] ).set({
       item: equipName[i],
       amount: equipAmount[i],
       checkoutTime: equipCheckoutTime[i]
@@ -493,13 +519,15 @@ function handleFile(e) {
 
 if(fileInput.addEventListener) fileInput.addEventListener('change', handleFile, false);
 </script>
+    
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
       <script src="js/index.js"></script>
     <script src="app.js"></script>
     <script>
    edit_page_default();
-   approve_page_default();  
+   approve_page_default(); 
+        ta_page_default();
         tracking_page_default();
           
     </script>
