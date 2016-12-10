@@ -1,9 +1,10 @@
 #EquipSavy
 
 ####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
-
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=9hJ38qULiWw
+" target="_blank"><img src="http://img.youtube.com/vi/9hJ38qULiWw/0.jpg" 
+alt="link" border="10" /></a>
 ######Semi working web version : <a target="_blank" href="http://equipsavy.000webhostapp.com/">EquipSavy</a>
-[link name](http://equipsavy.000webhostapp.com/){:target="_blank"}
 
 ##Overview:
 Equipsavy is a web application with the functionality to share equipment effectively in a class. To Log onto the website, first log onto
