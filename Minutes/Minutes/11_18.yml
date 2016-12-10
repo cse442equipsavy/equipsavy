@@ -1,0 +1,18 @@
+date: November 18, 2016
+meeting_type: Group Meeting
+attendance: [thalaiky, satyakra, johnfinc, akhil]
+excused_absence: [{abhinavm: Had to go to work}]
+
+
+task_progress: [ 
+  {ubit: <thalaiky>, progress: Completed the stuff needed for Sprint 4, need to push to git and finish the video},
+  {ubit: <satyakra>, progress: Completed the stuff needed for Sprint 4, need to finish the video},
+  {ubit: <johnfinc>, progress: Completed the stuff needed for Sprint 4, need to push to git and finish the video},
+  {ubit: <akhil>, progress: Completed the stuff needed for sprint 4, need to push to git and finish the video},
+]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+- Everyone showcased what they have completed for the sprint.
+- Put everything together and made sure that it all flows together.
+- demoed the website and tested the site thoroughly.
+

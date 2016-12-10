@@ -1,0 +1,47 @@
+date: October 14, 2016
+
+meeting_type: group
+
+attendance: [thalaiky, satyakra, tgsyre2, johnfinc, saiakhil, abhinavm]
+
+absent: [No Absences ]
+
+excused_absences: [ No Excused Absences ]
+
+task_progress: [ 
+
+  {ubit: <thalaiky>, progress: Completed the work necessary for sprint 2},
+
+  {ubit: <satyakra>, progress: Completed the work necessary for sprint 2},
+
+  {ubit: <tgsyre>, progress: Completed the work necessary for sprint 2},
+
+  {ubit: <johnfinc>, progress: Completed the work necessary for sprint 2},
+
+  {ubit: <saiakhil>, progress: Completed the work necessary for sprint 2},
+
+  {ubit: <abhinavm>, progress: Completed the work necessary for sprint 2}
+
+  ]
+
+issues: [{No Issues}
+
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+
+- Division of tasks for Sprint 3
+- Store equipment list on firebase and save it when a student checksout
+- Also store the student's info on who checked out what
+- Tristan wants to work with JJ and Akhil for parsing and data transfer from firebase
+- Courses saved on database
+- Department will have access to create new classes, assign instructor and TA
+- implementing levels of access (Students, TA & Students, Instructor & TA, Department)
+- JJ and Tristan to work on Displaying the EquipmentList, Reserving equipment and editing the 
+equipment List.
+- Akhil to work on approving the reservation, checkout eqipment, and tracking information on 
+instructor side.
+- Satya  & Thalaikya to work on login authentication for students, and instructor, and 
+course details 
+- Abhinav to work on Departmental accesss such as creating new classes and assigning instructors
+and TA for the courses. 

@@ -1,0 +1,73 @@
+date: September 10, 2016
+
+meeting_type: ta 
+
+attendance: [thalaiky, satyakra, tgsyre2, johnfinc, saiakhil, abhinavm]
+
+absent: [No Absences ]
+
+excused_absences: [ No Excused Absences ]
+
+task_progress: [ 
+
+  {ubit: <thalaiky>, progress: Worked on the reserve page using HTML},
+
+  {ubit: <satyakra>, progress: Worked on the login page using HTML},
+
+  {ubit: <tgsyre>, progress: Worked on the checkout page using HTML },
+
+  {ubit: <johnfinc>, progress: Worked on the course details page using HTML},
+
+  {ubit: <saiakhil>, progress: Worked on the edit equipment page using HTML},
+
+  {ubit: <abhinavm>, progress: Worked on the approving the reservation/checkout equipment page using HTML}
+
+  ]
+
+issues: [{No Issues}
+
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+
+  - We want to have the following done by sprint 2: 
+
+- Either add CSS and make it look pretty or use a Backend and Front-end developing.
+
+- Probably can use django or python for back end for web development
+
+       - can use a pre-made backend system if we don’t want to worry about security
+
+       - Some members (3) need to start working on the backend so that we can start linking the pages together
+
+       - While some members (3) will need to continue to work on the front end 
+
+- Make the project independent so that you do not have to use the UB Authentication
+
+- Will start working on the backend in Django, if that doesn’t work then we will work on backend using Python
+
+- Using Google authentication maybe easier
+
+- One person can work on the template for all the pages and the others can work on the functionality of the webpage
+
+- Everyone needs to go to the github issues page and talk about what each member will be working on this sprint
+
+- If there is a page that you like you can use it as a template but will need to cite it
+
+- Email confirmation that the student has reserved an equipment and when the TA approves the reservation then
+
+an email will be sent to the student confirming
+
+- Work Distribution: 
+
+        - Satya- work on backend for Course Details page in Django
+
+        - Thalaikya - work on frontend for login and course details
+
+        - Tristan - work on backend for login and verification 
+
+        - JJ - work on backend for equipment edit/upload (TA/instructor perspective)
+
+        - Akhil - Work on backend for checkout and part of login page 
+
+        - Abhinav - work on frontend for edit, checkout, and confirm

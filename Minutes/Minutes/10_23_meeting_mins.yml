@@ -1,0 +1,19 @@
+date: october 23, 2016
+meeting_type: group
+attendance: [<satyakra>, <johnfinc>, <thalaiky>, <tgsyre>, <saiakhil>, <abhinavm>]
+
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: <tgsyre>, progress: Finished only the sprint 2 stuff.}
+  {ubit: <satyakra>, progress: Still trying to work on adding users to database}
+  {ubit: <johnfinc>, progress: Worked on how to save the uploaded files onto the firebase database.}
+  {ubit: <thalaiky>, progress: Trying to figure out how to save things to the firebase database}
+  {ubit: <saiakhil>, progress: None since sprint 2}
+  {ubit: <abhinavm>, progress: None since sprint 2}
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  - Discussed the progress of the sprint 3
+  - Thalaikya will meet with JJ this week to figure out how to store items onto firebase database
+  - Satya and Thalaikya will be meeting up to figure out how to set up for the different levels of access
+  - Tristan will post his issue and work with JJ to figure out how to put the parsed file and put it 
+on the firebase database. 
