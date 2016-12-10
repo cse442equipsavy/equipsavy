@@ -1,9 +1,7 @@
 #EquipSavy
 
 ####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=WXmrmexfKbc&feature=youtu.be
-" target="_blank"><img src="http://img.youtube.com/vi/WXmrmexfKbc&feature=youtu.be/0.jpg" 
-alt="link" border="10" /></a>
+![](/images/equipsavy.gif?raw=true "Loginpage")
 ######Semi working web version : <a target="_blank" href="http://equipsavy.000webhostapp.com/">EquipSavy</a>
 
 ##Overview:
