@@ -1,6 +1,6 @@
 #EquipSavy
 
-####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, JJ Fincken, Tristan Syre and Abhinav Mahajan
+####Made by Sai Akhil Pendyala, Satya Kranthi Penumanchili, Thalaikya Voggu, John Fincken, Tristan Syre and Abhinav Mahajan
 ![](/images/equipsavy.gif?raw=true "Loginpage")
 ![](/images/git.jpg?raw=true "Loginpage")
 ######Semi working web version : <a target="_blank" href="http://equipsavy.000webhostapp.com/">EquipSavy</a>
@@ -22,6 +22,8 @@ page allows department members to add or cancel classes, add instructors to thos
 ##Instructor features:
 -	Choose a class to look over.
 -	Able to submit new pieces of equipment individually or in groups using .csv or .xlsx
+	*To upload an equipment list the format must be a spreadsheet with the first column the item name, the second column the amount of the item, and the third column the amount of time the item can be checked out.
+	*For example, for 1 laptop that can be checked out for 3 days, the row with that information would be "Laptop,1,3" where the commas represent the separation of columns.
 -	Able to approve or deny students requests for equipment.
 -	Able to track which student has which piece of equipment.
 -	Can add/remove  TA’s from a class
