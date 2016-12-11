@@ -522,8 +522,8 @@ function approveRow(r) {
     
     var user = row.cells[0].innerHTML;
     var equipName = row.cells[1].innerHTML;
-    var start = prompt("Please enter the start date of this reservation(mm/ss/yyyy) ");
-    var end = prompt("Please enter the end date of this reservation(mm/ss/yyyy) ");
+    var start = prompt("Please enter the start date of this reservation(mm/dd/yyyy) ");
+    var end = prompt("Please enter the end date of this reservation(mm/dd/yyyy) ");
     
     if(start != null && end != null){
     
