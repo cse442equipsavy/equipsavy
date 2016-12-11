@@ -54,7 +54,7 @@ a:hover {
   color: #a0b3b0;
   font-size: 20px;
   float: left;
-  width: 33%;
+  width: 20%;
   text-align: center;
   cursor: pointer;
   -webkit-transition: .5s ease;
@@ -68,6 +68,7 @@ a:hover {
   background: #008CBA;
   color: #ffffff;
 }
+
 
 .tab-group2 {
   list-style: none;
@@ -101,6 +102,7 @@ a:hover {
   background: #008CBA;
   color: #ffffff;
 }
+
 .tab-group3 {
   list-style: none;
   padding: 0;
@@ -133,6 +135,39 @@ a:hover {
   background: #008CBA;
   color: #ffffff;
 }
+.tab-group4 {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.tab-group4:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group4 li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+.tab-group4 li a:hover {
+  background: #006080;
+  color: #ffffff;
+}
+.tab-group4 .active a {
+  background: #008CBA;
+  color: #ffffff;
+}
+
 
 .tab-content > div:not(:first-child) {
   display: none;

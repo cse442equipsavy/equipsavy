@@ -1,36 +1,12 @@
 <!DOCTYPE html>
-<html >
+<!-- xlsx.js (C) 2013-2015 SheetJS http://sheetjs.com -->
+<!-- vim: set ts=2: -->
+<html>
 <head>
-      <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-
-  <meta charset="UTF-8">
-  <title>Staff Page</title>
-  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-  
-      <link rel="stylesheet" href="css/style.css">
-
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script type="text/javascript" src="jquery.js"></script>
-        
-  
-</head>
-    
-    <style>
-input[type=text] {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 25%;
-    box-sizing: border-box;
-    border: 1px solid #555;
-    outline: none;
-}
-
-input[type=text]:focus {
-     border: 2.5px solid #008CBA;
-}
-        #drop{
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>JS-XLSX Live Demo</title>
+<style>
+#drop{
 	border:2px dashed #bbb;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -39,161 +15,40 @@ input[type=text]:focus {
 	text-align:center;
 	font:20pt bold,"Vollkorn";color:#bbb
 }
+#b64data{
+	width:100%;
+}
 </style>
-
+</head>
 <body>
-   
-    <ul class="ul">
-  <li class="li"><a onclick="home()">Back</a></li>
-  <li class="li"><a onclick="home()")>Home</a></li>
-  <li class="li"><a onclick = "logout()">Logout</a></li>
-</ul>
-    
-  <div class="form">
-      
-      <ul class="tab-group4">
-        <li class="tab active"><a href="#edit">Edit Materials</a></li>
-        <li class="tab"><a href="#approve">Approve</a></li>
-          <li class="tab"><a href="#tracking">Tracking</a></li>
-           <li class="tab"><a href="#upload">Upload</a></li>
-          
-          
-      </ul>
-      
-      <div class="tab-content">
-        <div id="edit">   
-            <h1> Select items you wish to edit:</h1>
- <center>
-   
-     
-   
-  <TABLE  >
-      <thead>
-          
-      <tr>
-          <th> Name </th>
-          <th>Count</th>
-          <th>Edit</th>
-          <th>Delete</th>
-      </tr>
-          </thead>
-       
-      <tbody id="dataTable"  >
-      </tbody>
-     
-    </TABLE>
-        
-    <br>
-    <br>
-     <button class = "button button-block"onclick="add()" id = "add">Add</button><br>
-     
-    </center>
-    
-        </div>
-        
-        <div id="approve">   
-            <center>
-          <h1>Approve the items:</h1>
-            <TABLE  >
-      <thead>
-          
-      <tr>
-          <th> User </th>
-          <th>Equipment</th>
-          <th>Approve</th>
-          <th>Decline</th>
-      </tr>
-          </thead>
-       
-      <tbody id="approveTable"  >
-      </tbody>
-     
-    </TABLE>
-            </center> 
-
-        </div>
-           <div id = "tracking">
-              <center>
-              <TABLE  >
-      <thead>
-          
-      <tr>
-          <th> User </th>
-          <th>Equipment</th>
-          <th>Star Date</th>
-          <th>End Date</th>
-          <th>Action</th>
-      </tr>
-          </thead>
-       
-      <tbody id="trackingTable"  >
-      </tbody>
-     
-    </TABLE>
-          </center>
-          </div>
-          
-          <div id="upload">   
-         
-          
-              <h1>Upload  equipment list file in order 'name,amount,MaxTimeOut' on each line</h1>
-              
-              <div style = "visibility: hidden">
+<b>JS-XLSX (XLSX/XLSB/XLSM/XLS/XML) Live Demo</b><br />
 Output Format:
 <select name="format">
 <option value="csv" selected> CSV</option>
 <option value="json"> JSON</option>
 <option value="form"> FORMULAE</option>
 </select><br />
-                  </div>
 <!--<input type="radio" name="format" value="csv" checked> CSV<br>
 <input type="radio" name="format" value="json"> JSON<br>
 <input type="radio" name="format" value="form"> FORMULAE<br> -->
 
-<div id="drop"><h1>Drop an XLSX / XLSM / XLSB / ODS / XLS / XML file here to upload equipment list</h1></div>
-              <p><h1>...or click here to select a file  <input type="file" name="xlfile" id="fileInput" /> </h1></p>
-<br><label><pre id="out"></pre></label>
-<div style="visibility: hidden">          
+<div id="drop">Drop an XLSX / XLSM / XLSB / ODS / XLS / XML file here to see sheet data</div>
+<p><input type="file" name="xlfile" id="fileInput" /> ... or click here to select a file</p>
 <textarea id="b64data">... or paste a base64-encoding here</textarea>
 <input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
 Advanced Demo Options: <br />
 Use Web Workers: (when available) <input type="checkbox" name="useworker" checked><br />
 Use Transferrables: (when available) <input type="checkbox" name="xferable" checked><br />
 Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked><br />
-
+<pre id="out"></pre>
 <br />
-          </div>
-              
-        </div>   
-          
-         
-          
-          
-    
-        
-      </div><!-- tab-content -->
-      
-    </div><!-- /form -->
-    
-   <!-- popup -->    
-   <div id="popup_box">
-  <input type="button"  id="cancel_button" class="close" value = "x" >
-    <p id = "rowID"></p>
-        <label>Item name:</label><br>
-  <input id = "itemName"type="text" placeholder="item name"><br><br>
-  <label>Amount:</label><br>              
-  <input id = "amountInput"type="text"  placeholder="amount"><br><br>
-  
-       <center><input type="button" class = "btn" id="no_button" value="NO">
-       <input type="button" class = "btn "id="yes_button" onclick="yesEdit()" value="YES"></center>
-       <br>
- </div> 
-
-    <script src="js_xlsx/shim.js"></script>
-<script src="js_xlsx/jszip.js"></script>
-<script src="js_xlsx/xlsx.js"></script>
+<!-- uncomment the next line here and in xlsxworker.js for encoding support -->
+<!--<script src="dist/cpexcel.js"></script>-->
+<script src="shim.js"></script>
+<script src="jszip.js"></script>
+<script src="xlsx.js"></script>
 <!-- uncomment the next line here and in xlsxworker.js for ODS support -->
-<script src="js_xlsx/dist/ods.js"></script>
+<script src="dist/ods.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
 
 <script>
@@ -400,7 +255,7 @@ if(i<output.length-1)
 equipCheckoutTime.push(inputString);
 console.log("Finished parsing, line 100\n");
 for (i=0; i<=itemNum;i++){//uploads info to list
-  firebase.database().ref('courses/'+sessionStorage.getItem(course_selected_staff)+'/Equipment/'+equipName[i] ).set({
+  firebase.database().ref('courses/CSE442/Equipment/'+equipName[i] ).set({
       item: equipName[i],
       amount: equipAmount[i],
       checkoutTime: equipCheckoutTime[i]
@@ -493,18 +348,5 @@ function handleFile(e) {
 
 if(fileInput.addEventListener) fileInput.addEventListener('change', handleFile, false);
 </script>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-      <script src="js/index.js"></script>
-    <script src="app.js"></script>
-    <script>
-   edit_page_default();
-   approve_page_default();  
-        tracking_page_default();
-          
-    </script>
-   
-    
-
 </body>
 </html>
