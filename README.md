@@ -27,7 +27,7 @@ page allows department members to add or cancel classes, add instructors to thos
 -	Can add/remove  TA’s from a class
 
 ##Department features:
--	Can add/remove instructors from a from a course
+-	Can add/remove instructors from a course
 
 ##Software:
 -	Used a firebase console as the backend to the website.
