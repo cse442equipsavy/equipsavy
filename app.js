@@ -11,6 +11,10 @@
 
 }());
 
+function home(){
+    window.location = sessionStorage.getItem("home");
+}
+
 <!-- Login page --> /*---------------------------------------------------------------------------------------*/
 
 const auth = firebase.auth();
@@ -56,8 +60,19 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             if(roleValue == 0){
                 window.location = "departmental.html";
             }
-            else {
-                window.location = "Course_Details.html";
+            else if(roleValue == 2) {
+                sessionStorage.setItem("home", "Course_Details.html");
+                sessionStorage.setItem("editPage", "editmaterial.html");
+                window.location = sessionStorage.getItem("home");
+            }
+            else if (roleValue == 3){
+                sessionStorage.setItem("home", "student_Course_Details.html");
+                window.location = sessionStorage.getItem("home");
+            }
+             else if (roleValue == 1){
+                sessionStorage.setItem("home", "student_Course_Details.html");
+                 sessionStorage.setItem("editPage", "instr_editmaterial.html");
+                window.location = sessionStorage.getItem("home");
             }
         });
     }
@@ -81,14 +96,12 @@ function courses(){
             roleValueRef.on('value', function(snapshot) {
                 roleValue = snapshot.val();
                 if(roleValue == 1){
-                    document.getElementById('stu').style.visibility = 'hidden';
-                    document.getElementById('scourses').style.visibility = 'hidden';
-                    var dbInstCoursesList = firebase.database().ref().child('Users').child(userId).child('InstCourses');
+                   var dbInstCoursesList = firebase.database().ref().child('Users').child(userId).child('InstCourses');
                     dbInstCoursesList.on('child_added',snap => {
                         var x = document.createElement("OPTION");
                         var t = document.createTextNode(""+snap.val());
                         x.appendChild(t);
-                        document.getElementById('icourses').appendChild(x);
+                        document.getElementById('scourses').appendChild(x);
                     });
                 }
 
@@ -110,8 +123,7 @@ function courses(){
                 }
 
                 if(roleValue == 3){
-                    document.getElementById('inst').style.visibility = 'hidden';
-                    document.getElementById('icourses').style.visibility = 'hidden';
+                    
                     var dbStuCoursesList = firebase.database().ref().child('Users').child(userId).child('StuCourses');
                     dbStuCoursesList.on('child_added',snap => {
                         var x = document.createElement("OPTION");
@@ -143,7 +155,7 @@ function directToEditPage() {
                     var ic = document.getElementById('icourses');
                     var ival = ic.options[ic.selectedIndex].value;
                     sessionStorage.setItem("course_selected_staff", ival);
-                    window.location = "editmaterial.html";
+                    window.location = sessionStorage.getItem("editPage");
                     return false;
                 }
             });
@@ -171,6 +183,10 @@ function directToReservePage() {
                     window.location = "reserve_page.html";
                     return false;
                 }
+                else if( roleValue == 1){
+                    window.location = "instr_editmaterial.html";
+                    return false;
+                }
             });
         }
         else{
@@ -181,7 +197,7 @@ function directToReservePage() {
 
 function logOutUser(){
     firebase.auth().signOut();
-    window.location = "slogin.html";
+    window.location = "index.html";
 }
 
 
@@ -213,6 +229,7 @@ function logOutUser(){
     var del = document.createElement('input'); 
         
 del.type = "button";
+        del.id="delete";
 del.class = "button button-block";
 del.value = "Delete";
         del.className = "btn";
@@ -243,7 +260,7 @@ cell4.appendChild(del);
 
 function logout() {
         firebase.auth().signOut();
-        window.location = "slogin.html";
+        window.location = "index.html";
     }
     
 
@@ -262,6 +279,7 @@ newPostRef.set({
 }
 
 function deleteRow(r) {
+    
     var i = r.parentNode.parentNode.rowIndex-1;
    var key = document.getElementById("dataTable").rows[i].id;
     var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(key);
@@ -269,43 +287,191 @@ function deleteRow(r) {
      document.getElementById("dataTable").deleteRow(i);
     }
 
-function editRow(r) {
-    var i = r.parentNode.parentNode.rowIndex-1;
-    var row = document.getElementById("dataTable").rows[i];
-     document.getElementById("rowID").innerHTML = row.id;
-     document.getElementById("itemName").value = row.cells[0].innerHTML;
-     document.getElementById("amountInput").value = row.cells[1].innerHTML;
-   
-    }
+//function editRow(r) {
+//     var i = r.parentNode.parentNode.rowIndex-1;
+//  var row = document.getElementById("dataTable").rows[i];
+////    var key = row.id;
+//   var equipName = prompt("please enter the name of the equipment",row.cells[0].innerHTML);
+//  
+//    var equipCount = prompt("please enter the amount of the equipment",row.cells[1].innerHTML);
+//    if(equipName!=null && equipCount!=null){
+//        row.cells[0].innerHTML = equipName;
+//        row.cells[1].innerHTML = equipCount;
+//        
+//        var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(key);
+//        
+//        rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
+//        
+//  
+//    }
+//   
+//    }
 
-function yesEdit() {
-    var id = document.getElementById("rowID").innerHTML;
-   var row = document.getElementById(id);
-    
-    var name = document.getElementById("itemName").value;
-    var count = document.getElementById("amountInput").value;
-    
-    var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(id);
-    
-    if(id != name){
-         rootRef.remove();
-         row.parentNode.removeChild(row);
-        rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(name);
-    }
-    
-    if (name!=null){row.cells[0].innerHTML = name;}
-   if (count!=null){ row.cells[1].innerHTML = count;}
-    
-    
-    rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
-  
-    
-    }
+
+function editRow(r) {
+
+
+
+   var i = r.parentNode.parentNode.rowIndex-1;
+
+
+
+   var row = document.getElementById("dataTable").rows[i];
+
+
+
+   var name = prompt("change the name:",row.cells[0].innerHTML);
+
+
+
+   var count = prompt("change the count:",row.cells[1].innerHTML);
+
+
+
+   if (name!=null){row.cells[0].innerHTML = name;}
+
+
+
+   if (count!=null){ row.cells[1].innerHTML = count;}
+
+
+    
+
+
+
+   var rootRef =firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(row.id);
+
+
+
+   rootRef.update({ item : row.cells[0].innerHTML, amount: row.cells[1].innerHTML});
+
+
+    }
+
+
+
 
  
 
 
  <!-- End Edit page --> /*---------------------------------------------------------------------------------------*/
+      <!--  TA  --> /*---------------------------------------------------------------------------------------*/
+
+function ta_page_default(){ 
+   
+   var rootRef = firebase.database().ref("courses/"+sessionStorage.getItem('course_selected_staff')+"/details/TA");
+    
+      rootRef.on("child_added",snap => {
+        var key = snap.key ;
+          var email = snap.child("UBIT").val();
+    var table = document.getElementById("TAtable");
+    var row = table.insertRow(-1);
+        row.id = key;
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+         
+    cell1.innerHTML = email;
+        
+    var app = document.createElement('input'); 
+        
+app.type = "button";
+app.class = "button button-block";
+app.value = "remove";
+        app.className = "btn";
+app.onclick = function(){remove_staff(this)}; 
+
+cell2.appendChild(app);
+
+      
+
+    });
+    
+   }
+
+ function add_staff(){
+     var name = prompt("enter the UBIT name of the student:");
+     if(name != null){ 
+         
+         var rootRef = firebase.database().ref("Users");
+          rootRef.on("child_added",snap => {
+               var key = snap.key;
+       if(name == snap.child("UserName").val()){
+          
+           var newRef = firebase.database().ref("courses/"+sessionStorage.getItem("course_selected_staff")+"/details/TA/"+name);
+            newRef.set({
+               UBIT: name
+            });
+           
+           var newRef = firebase.database().ref("Users/"+key);
+           newRef.update({RoleValue:2});
+          
+           newRef = newRef.child("InstCourses");
+           var i = snap.child("InstCourses").numChildren();
+          
+           var j = 1;
+            
+           var k = i+j;
+           
+           i = "Course"+k;
+           var foo = {};
+           foo[i] = sessionStorage.getItem("course_selected_staff");
+          newRef= newRef.child(i);
+           newRef.set(sessionStorage.getItem("course_selected_staff"));
+       }
+
+    });
+         
+     }
+            
+        }
+
+function remove_staff(r) {
+    
+    var i = r.parentNode.parentNode.rowIndex-1;
+    
+   var row = document.getElementById("TAtable").rows[i];
+    var key = row.id;
+    var rootRef = firebase.database().ref("courses/"+sessionStorage.getItem('course_selected_staff')+"/details/TA/"+key);
+    rootRef.remove();
+    
+    var rootRef = firebase.database().ref("Users");
+   
+          rootRef.on("child_added",snap => {
+               var key = snap.key;
+               
+       if(row.cells[0].innerHTML == snap.child("UserName").val()){
+ 
+          
+         var  newRef = rootRef.child(key).child("InstCourses");
+           var i = snap.child("InstCourses").numChildren();
+           if(i>1){
+               newRef.on("child_added",snap => {
+                    
+                 if( snap.val() == sessionStorage.getItem("course_selected_staff")){
+                     
+                     
+                    var key_remove= snap.key;
+                     newRef.child(key_remove).remove();
+                 }
+               });
+         
+           }
+           else if(i==1){
+               rootRef.child(key).update({RoleValue: 3});
+               rootRef.child(key).child("InstCourses").remove();
+           }
+           
+           
+       }
+
+    });
+    
+     document.getElementById("TAtable").deleteRow(i);
+    }
+   
+    
+<!-- End TA  --> /*---------------------------------------------------------------------------------------*/
+     
      <!--  Approve  --> /*---------------------------------------------------------------------------------------*/
 
 function approve_page_default(){ 
@@ -334,7 +500,7 @@ app.type = "button";
 app.class = "button button-block";
 app.value = "Approve";
         app.className = "btn";
-app.onclick = function(){deleteRow(this)}; 
+app.onclick = function(){approveRow(this)}; 
         var dec = document.createElement('input');       
 dec.type = "button";
 dec.value = "Decline";
@@ -349,7 +515,39 @@ cell4.appendChild(dec);
     
    }
 
+
+function approveRow(r) {
+    var i = r.parentNode.parentNode.rowIndex - 1;
+    var row = document.getElementById("approveTable").rows[i];
+    
+    var user = row.cells[0].innerHTML;
+    var equipName = row.cells[1].innerHTML;
+    var start = prompt("Please enter the start date of this reservation(mm/dd/yyyy) ");
+    var end = prompt("Please enter the end date of this reservation(mm/dd/yyyy) ");
+    
+    if(start != null && end != null){
+    
+    var newPostRef = firebase.database().ref().child("tracking").child( sessionStorage.getItem('course_selected_staff')).push();
+newPostRef.set({
+    user: user,
+    equipment : equipName,
+     startDate: start,
+    endDate : end
+});
+      
+         var rootRef = firebase.database().ref("reserve/courses/"+sessionStorage.getItem('course_selected_staff')+"/"+row.id);
+        rootRef.remove();
+
+document.getElementById("approveTable").deleteRow(i);}
+    else{
+        alert("try again");
+    }
+
+}
+
+
 function decline(r) {
+    
     var i = r.parentNode.parentNode.rowIndex-1;
    var key = document.getElementById("approveTable").rows[i].id;
     var rootRef = firebase.database().ref("reserve/courses/"+sessionStorage.getItem('course_selected_staff')).child(key);
@@ -366,6 +564,67 @@ function decline(r) {
     
     }
 
+function tracking_page_default(){
+ 
+var rootRef = firebase.database().ref("tracking/"+sessionStorage.getItem('course_selected_staff'));
+    
+      rootRef.on("child_added",snap => {
+        var key = snap.key ;
+          var user = snap.child("user").val();
+          
+var item = snap.child("equipment").val();
+var startDate = snap.child("startDate").val();
+var endDate = snap.child("endDate").val();
+         
+var table = document.getElementById("trackingTable");
+          
+var row = table.insertRow(-1);
+          
+     row.id=key;
+
+var cell1 = row.insertCell(0);
+           
+var cell2 = row.insertCell(1);
+          
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+
+cell1.innerHTML = user;
+cell2.innerHTML = item;
+cell3.innerHTML = startDate;
+cell4.innerHTML = endDate;
+    
+var app = document.createElement('input'); 
+app.type = "button";
+app.class = "button button-block";
+app.value = "returned";
+        app.className = "btn";
+app.onclick = function(){returned(this)}; 
+
+    cell5.append(app);
+
+    });
+
+}
+
+function returned(r) {
+    
+    var i = r.parentNode.parentNode.rowIndex-1;
+   var row = document.getElementById("trackingTable").rows[i];
+    var key = row.id;
+    var rootRef = firebase.database().ref("tracking/"+sessionStorage.getItem('course_selected_staff')).child(key);
+    rootRef.remove();
+    
+    var rootRef = firebase.database().ref().child("courses").child( sessionStorage.getItem('course_selected_staff')).child("Equipment").child(row.cells[1].innerHTML).child("amount");
+     
+    rootRef.transaction(function(amount) {
+  
+  return amount + 1;
+        
+});
+     document.getElementById("trackingTable").deleteRow(i);
+    }
    
     
 <!-- End Approve  --> /*---------------------------------------------------------------------------------------*/
@@ -437,12 +696,107 @@ for (var i = 0; i < checkboxes.length; i++) {
  }   
 }
        
-    window.location = "Course_Details.html";
+    window.location = sessionStorage.getItem("home");
 
 }
 
    
     
 <!-- End reserve page --> /*---------------------------------------------------------------------------------------*/
+    
+    <!--  department page --> /*---------------------------------------------------------------------------------------*/
+        function add_instr(){
+            
+            var course_name = document.getElementById("instr_coursename").value;
+            var course = document.getElementById("instr_course").value.toUpperCase();
+            var instr = document.getElementById("instr").value;
+            if(instr != null && course !=null){ 
+            var rootRef = firebase.database().ref("courses/"+course+"/details");
+            rootRef.set({
+               instructor: instr,
+                courseName : course_name
+            });
+
+            
+            
+         
+         var rootRef = firebase.database().ref("Users");
+          rootRef.on("child_added",snap => {
+               var key = snap.key;
+       if(instr == snap.child("UserName").val()){
+          
+           
+           var newRef = firebase.database().ref("Users/"+key);
+          
+           newRef = newRef.child("InstCourses");
+           var i = snap.child("InstCourses").numChildren();
+          
+           var j = 1;
+            
+           var k = i+j;
+           
+           i = "Course"+k;
+           var foo = {};
+           foo[i] = course;
+          newRef= newRef.child(i);
+           newRef.set(course);
+       }
+
+    });
+         
+     }
+                        document.getElementById("instr").value = null;
+            document.getElementById("instr_coursename").value=null;
+            document.getElementById("instr_course").value = null;
+            showpopup();
+        }
+
+function remove_instr(){
+       var course_name = document.getElementById("instr_coursename").value;
+            var course = document.getElementById("instr_course").value.toUpperCase();
+            var instr = document.getElementById("instr").value;
+            if(instr != null && course !=null){ 
+            var rootRef = firebase.database().ref("courses/"+course+"/details");
+            rootRef.remove();
+   var rootRef = firebase.database().ref("Users");
+   
+          rootRef.on("child_added",snap => {
+               var key = snap.key;
+               
+       if(instr == snap.child("UserName").val()){
+ 
+          
+         var  newRef = rootRef.child(key).child("InstCourses");
+           var i = snap.child("InstCourses").numChildren();
+           if(i>0){
+               newRef.on("child_added",snap => {
+                    
+                 if( snap.val() == course){
+                     
+                   
+                    var key_remove= snap.key;
+                     newRef.child(key_remove).remove();
+                 }
+               });
+         
+           }
+           
+           
+           
+       }
+
+    });
+                    document.getElementById("instr").value = null;
+            document.getElementById("instr_coursename").value=null;
+            document.getElementById("instr_course").value = null;
+    showpopup();
+   
+    
+        }}
+
+
+        
+            
+<!-- End department page --> /*---------------------------------------------------------------------------------------*/
 
     

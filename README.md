@@ -15,7 +15,7 @@ equipment to the courses that they teach, either by adding a .csv file with equi
 of equipment individually. Teaching assistants are unique in that they have the access of both the students and instructors. The department
 page allows department members to add or cancel classes, add instructors to those classes, and add TA’s to a class.
 
- ##Student features:
+##Student features:
 - able to select a class to reserve equipment for
 - able to reserve 1 of all necessary pieces of equipment
 
@@ -27,7 +27,7 @@ page allows department members to add or cancel classes, add instructors to thos
 -	Can add/remove  TA’s from a class
 
 ##Department features:
--	Can add/remove instructors from a from a course
+-	Can add/remove instructors from a course
 
 ##Software:
 -	Used a firebase console as the backend to the website.
