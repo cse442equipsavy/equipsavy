@@ -16,8 +16,8 @@ of equipment individually. Teaching assistants are unique in that they have the 
 page allows department members to add or cancel classes, add instructors to those classes, and add TA’s to a class.
 
 ##Student features:
-- able to select a class to reserve equipment for
-- able to reserve 1 of all necessary pieces of equipment
+- Able to select a class to reserve equipment for
+- Able to reserve 1 of all necessary pieces of equipment
 
 ##Instructor features:
 -	Choose a class to look over.
@@ -27,6 +27,14 @@ page allows department members to add or cancel classes, add instructors to thos
 -	Able to approve or deny students requests for equipment.
 -	Able to track which student has which piece of equipment.
 -	Can add/remove  TA’s from a class
+
+##Teaching Assitant(TA) features:
+-	Choose a class to look over.
+-	Able to submit new pieces of equipment individually or in groups using .csv or .xlsx
+	*To upload an equipment list the format must be a spreadsheet with the first column the item name, the second column the amount of the item, and the third column the amount of time the item can be checked out.
+	*For example, for 1 laptop that can be checked out for 3 days, the row with that information would be "Laptop,1,3" where the commas represent the separation of columns.
+-	Able to approve or deny students requests for equipment.
+-	Able to track which student has which piece of equipment.
 
 ##Department features:
 -	Can add/remove instructors from a course
